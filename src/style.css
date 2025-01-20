@@ -5,7 +5,8 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh; /* 화면 전체 높이 */
-    background-color: #f0f0f0;
+    background-color: #99ebcf;
+    background: linear-gradient(to bottom, #99ebcf, #dde7e4, #f5f7ad);
   }
   
   .book-container {
@@ -15,9 +16,11 @@ body {
   .page {
     display: flex; /* Flexbox로 내부 정렬 */
     align-items: center; /* 세로 중앙 정렬 */
-    background-color: #bad9fb;
-    border: 2px solid #565454; /* 기본 테두리 */
-    border-radius: 15px; /* 모서리를 둥글게 */
+    background-image: 
+    linear-gradient(to bottom, rgb(255, 255, 255, 0.3), rgb(166, 228, 194, 0.3)), /* 그라데이션 */
+    url('./star.jpg'); /* 배경 이미지 */
+    border: 1.5px solid rgb(84, 221, 145, 0.5); /* 기본 테두리 */
+    border-radius: 10px; /* 모서리를 둥글게 */
   }
 
   .page.left {
@@ -25,6 +28,11 @@ body {
     width: 250px; /* 각 사각형 너비 */
     height: 600px; /* 각 사각형 높이 */
     border-right: none; /* 왼쪽 페이지는 오른쪽 테두리를 없앰 */
+    
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+
+    box-shadow: -10px 0 30px #f0f0f0; /* 그림자 설정 */
   }
   
   .page.right {
@@ -32,23 +40,51 @@ body {
     width: 700px; /* 각 사각형 너비 */
     height: 600px; /* 각 사각형 높이 */
     border-left: none; /* 오른쪽 페이지는 왼쪽 테두리를 없앰 */
+
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+
+    box-shadow: 10px 0 30px #f0f0f0; /* 그림자 설정 */
   }
 
   .inner-page {
-    background-color: aliceblue;
-    border: 2px solid #565454; /* 기본 테두리 */
-    border-radius: 15px; /* 모서리를 둥글게 */
+    background-color: rgb(255, 255, 255, 0.7);
+    border: 1.5px solid rgb(86, 84, 84, 0.3); /* 기본 테두리 */
+    border-radius: 10px; /* 모서리를 둥글게 */
   }
 
   .inner-page.left {
-    width: 95%; /* 부모의 95% 너비 */
-    height: 95%; /* 부모의 80% 높이 */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* 세로 중앙 정렬 */
+    width: 90%; /* 부모의 90% 너비 */
+    height: 90%; /* 부모의 80% 높이 */
     border-right: none; /* 왼쪽 페이지는 오른쪽 테두리를 없앰 */
+
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+  }
+
+  .inner-page.left.top {
+    width: 90%; /* 100% 너비 */
+    height: 180px; /* 200px 높이 */
+    margin-top: 20px;
+    background-color: aqua;
+    background-size: cover; /* 이미지 크기 조정 */
+    background-position: center; /* 이미지 위치 중앙 */
+
+    border: none;
+
+    border-radius: 0px; /* 모서리를 둥글게 */
   }
 
   .inner-page.right {
-    width: 97%; /* 부모의 95% 너비 */
-    height: 95%; /* 부모의 80% 높이 */
+    background-color: rgb(236, 236, 236);
+    width: 95%; /* 부모의 90% 너비 */
+    height: 90%; /* 부모의 80% 높이 */
     border-left: none; /* 오른쪽 페이지는 왼쪽 테두리를 없앰 */
+
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
   }
   
