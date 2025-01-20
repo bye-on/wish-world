@@ -14,31 +14,30 @@ body {
   
   .page {
     display: flex; /* Flexbox로 내부 정렬 */
-    
     align-items: center; /* 세로 중앙 정렬 */
     background-color: #bad9fb;
     border: 2px solid #565454; /* 기본 테두리 */
-    border-radius: 20px; /* 모서리를 둥글게 */
+    border-radius: 15px; /* 모서리를 둥글게 */
   }
 
   .page.left {
     justify-content: right; /* 가로 중앙 정렬 */
-    width: 15vw; /* 각 사각형 너비 */
-    height: 70vh; /* 각 사각형 높이 */
+    width: 250px; /* 각 사각형 너비 */
+    height: 600px; /* 각 사각형 높이 */
     border-right: none; /* 왼쪽 페이지는 오른쪽 테두리를 없앰 */
   }
   
   .page.right {
     justify-content: left; /* 가로 중앙 정렬 */
-    width: 40vw; /* 각 사각형 너비 */
-    height: 70vh; /* 각 사각형 높이 */
+    width: 700px; /* 각 사각형 너비 */
+    height: 600px; /* 각 사각형 높이 */
     border-left: none; /* 오른쪽 페이지는 왼쪽 테두리를 없앰 */
   }
 
   .inner-page {
     background-color: aliceblue;
     border: 2px solid #565454; /* 기본 테두리 */
-    border-radius: 20px; /* 모서리를 둥글게 */
+    border-radius: 15px; /* 모서리를 둥글게 */
   }
 
   .inner-page.left {
@@ -48,7 +47,7 @@ body {
   }
 
   .inner-page.right {
-    width: 95%; /* 부모의 95% 너비 */
+    width: 97%; /* 부모의 95% 너비 */
     height: 95%; /* 부모의 80% 높이 */
     border-left: none; /* 오른쪽 페이지는 왼쪽 테두리를 없앰 */
   }
