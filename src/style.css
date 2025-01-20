@@ -1,4 +1,4 @@
-body {
+  body {
     margin: 0;
     padding: 0;
     display: flex;
@@ -64,6 +64,28 @@ body {
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
   }
+  .inner-page.left.inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* 세로 중앙 정렬 */
+    width: 90%; /* 부모의 90% 너비 */
+    height: 90%; /* 부모의 80% 높이 */
+    border-right: none; /* 왼쪽 페이지는 오른쪽 테두리를 없앰 */
+
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+  }
+
+  .left-wing img{
+    position: relative;
+    top: -20px;
+    left: -100px;
+    width: auto;
+    height: auto;
+    display: block;
+    max-width: 60%;
+    z-index: 1;
+  }
 
   .inner-page.left.top {
     width: 90%; /* 100% 너비 */
@@ -86,5 +108,16 @@ body {
 
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
+  }
+
+  .right-wing img{
+    position: relative;
+    top: -20px;
+    left: 630px;
+    width: auto;
+    height: auto;
+    display: block;
+    max-width: 18%;
+    z-index: 1;
   }
   
