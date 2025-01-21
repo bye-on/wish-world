@@ -1,3 +1,8 @@
+  @font-face {
+    font-family: 'YComputer';
+    src: url(./font/Ycomputer.ttf);
+  }
+  
   body {
     margin: 0;
     padding: 0;
@@ -24,7 +29,7 @@
   .left-wing img {
     top: 7%; /* 부모 요소의 중간에 위치 */
     left: -60px; /* 부모 요소의 왼쪽 바깥으로 이동 */
-    max-width: 46%; /* 원하는 비율로 크기 조정 */
+    max-width: 44%; /* 원하는 비율로 크기 조정 */
     transform: translateY(-50%); /* 세로 중앙 정렬 */
   }
 
@@ -40,7 +45,7 @@
     align-items: center; /* 세로 중앙 정렬 */
     background-image: 
     linear-gradient(to bottom, rgb(255, 255, 255, 0.3), rgb(166, 228, 194, 0.3)), /* 그라데이션 */
-    url('./star.jpg'); /* 배경 이미지 */
+    url('./img/star.jpg'); /* 배경 이미지 */
     border: 1.5px solid rgb(84, 221, 145, 0.5); /* 기본 테두리 */
     border-radius: 10px; /* 모서리를 둥글게 */
   }
@@ -91,8 +96,10 @@
   }
 
   .inner-page.left.inner-top {
+    font-family: 'YComputer';
+    font-size: 11px;
     width: 90%; /* 부모의 10% 너비 */
-    height: 10%; /* 부모의 80% 높이 */
+    height: 8%; /* 부모의 80% 높이 */
     border: none;
     background: none;
   }
@@ -127,7 +134,7 @@
 
   .profile-img {
     margin-top: 15px;
-    width: 160px;
+    width: 150px;
     height: 140px;
     border: 1.5px solid #ff2919;
   }
@@ -150,23 +157,26 @@
 
   .discription p {
     font-size: 13px;
+    color: red;
     margin: 3px;
   }
 
   .gimochi-box {
-    margin: 3px;
+    margin: 4px;
     padding-left: 10px;
     width: 150px;
     height: 30px;
 
     border: 1.5px solid #a5a5a5;
     border-radius: 5px;
+    box-shadow: 0 0 3px 1px #a5a5a5;
   }
 
   .gimochi-box p {
-    font-size: 16px;
+    font-family: 'YComputer';
+    font-size: 13px;
     margin: 0; /* 기본 margin 제거 */
-    margin-top: 3px;
+    margin-top: 7px;
     color: rgb(60, 186, 218);
   }
 
@@ -174,7 +184,6 @@
     width: 90%; /* 100% 너비 */
     height: 180px; /* 200px 높이 */
     margin-top: 20px;
-    background-color: aqua;
     background-size: cover; /* 이미지 크기 조정 */
     background-position: center; /* 이미지 위치 중앙 */
 
@@ -196,9 +205,14 @@
     border-bottom-left-radius: 5px;
   }
 
+  .inner-page.right.inner-top,
+  .inner-page.right.inner-bottom {
+    background-color: #ffffff;
+  }
+
   .inner-page.right.inner-top {
     width: 90%; /* 부모의 10% 너비 */
-    height: 10%; /* 부모의 80% 높이 */
+    height: 8%; /* 부모의 80% 높이 */
     border: none;
     background: none;
   }
@@ -215,4 +229,56 @@
     border-radius: 10px; /* 모서리를 둥글게 */
   }
 
+  .main-contents { 
+    
+  }
+
+  .clip-groups {
+    position: absolute;
+    right: -10px;
+    top: 25%;
+    display: flex;
+    flex-direction: column;
+    gap: 250px; /* 클립 그룹 간 간격 */
+    z-index: 3;
+  }
+  
+  .clips {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* 같은 그룹 내 클립 간 간격 */
+  }
+  
+  .clip {
+    background: linear-gradient(to right, #d1d1d1, #ffffff);
+
+    width: 25px;
+    height: 8px;
+    background-color: #c0c0c0;
+    border-radius: 4px;
+    position: relative;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* 기본적인 그림자 */
+  }
+  
+  .clip::before,
+  .clip::after {
+    content: '';
+    position: absolute;
+    width: 10px; /* 그림자 크기 */
+    height: 10px;
+    background-color: rgba(0, 0, 0, 0.3); /* 그림자 색상 */
+    border-radius: 50%; /* 동그란 모양 */
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: -1; /* 클립 뒤에 배치 */
+  }
+  
+  .clip::before {
+    left: -5px; /* 왼쪽 그림자 위치 */
+  }
+  
+  .clip::after {
+    right: -5px; /* 오른쪽 그림자 위치 */
+  }
+  
   
