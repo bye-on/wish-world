@@ -297,11 +297,85 @@
     height: 30px;
     border-radius: 5px;
     border: 1.5px solid #a5a5a5;
+    position: relative;
+    z-index: 2; /* index 자체가 앞에 오도록 설정 */
   }
 
   .index p {
-    margin: 6px;
-    margin-left: 8px;
-    font-size: 13px;
+    margin: 7px;
+    font-size: 12px;
   }
+  
+  .index.index1::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 15px;
+    height: 100%;
+    background-color: rgba(192, 160, 225, 0.7); /* 다른 색상 */
+    border-radius: 0 3px 3px 0; /* 오른쪽 끝 부분 둥글게 */
+    z-index: 1;
+  }
+
+  .index.index2::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 15px;
+    height: 100%;
+    background-color: rgba(241, 94, 94, 0.7); /* 원하는 색상 */
+    border-radius: 0 3px 3px 0; /* 오른쪽 끝 부분 둥글게 */
+    z-index: 1;
+  }
+  
+  .index.index3::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 15px;
+    height: 100%;
+    background-color: rgba(153, 204, 255, 0.7); /* 다른 색상 */
+    border-radius: 0 3px 3px 0; /* 오른쪽 끝 부분 둥글게 */
+    z-index: 1;
+  }
+  
+  .index.index4::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 15px;
+    height: 100%;
+    background-color: rgb(153, 255, 153, 0.7) ; /* 다른 색상 */
+    border-radius: 0 3px 3px 0; /* 오른쪽 끝 부분 둥글게 */
+    z-index: 1;
+  }
+  
+  .index.index5::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 15px;
+    height: 100%;
+    background-color: rgb(255, 255, 153, 0.7); /* 다른 색상 */
+    border-radius: 0 3px 3px 0; /* 오른쪽 끝 부분 둥글게 */
+    z-index: 1;
+  }
+  
+  .index.index6::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 15px;
+    height: 100%;
+    background-color: rgba(255, 153, 209, 0.7); /* 다른 색상 */
+    border-radius: 0 3px 3px 0; /* 오른쪽 끝 부분 둥글게 */
+    z-index: 1;
+  }
+  
   
