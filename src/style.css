@@ -230,10 +230,6 @@
     border-radius: 10px; /* 모서리를 둥글게 */
   }
 
-  .main-contents { 
-    
-  }
-
   .clip-groups {
     position: absolute;
     right: -10px;
@@ -292,19 +288,27 @@
   }
 
   .index {
+    display: block;
     background-color: rgb(255, 255, 255, 0.8);
     width: 75px;
     height: 30px;
     border-radius: 5px;
     border: 1.5px solid #a5a5a5;
     position: relative;
+    cursor: pointer; /* 클릭 가능하게 설정 */
+    pointer-events: auto; /* 클릭 이벤트 활성화 */
     z-index: 2; /* index 자체가 앞에 오도록 설정 */
+  }
+
+  .index:active {
+    text-decoration-line: underline;
   }
 
   .index p {
     margin: 7px;
     font-size: 12px;
-  }
+    text-decoration: none; /* 기본적으로 밑줄 제거 */
+  } 
   
   .index.index1::after {
     content: '';
