@@ -16,6 +16,7 @@
   
   .book-container {
     display: flex;
+    z-index: -3;
   }
 
   .left-wing img,
@@ -211,7 +212,7 @@
   }
 
   .inner-page.right.inner-top {
-    width: 90%; /* 부모의 10% 너비 */
+    width: 95%; /* 부모의 10% 너비 */
     height: 8%; /* 부모의 80% 높이 */
     border: none;
     background: none;
@@ -264,8 +265,8 @@
   .clip::after {
     content: '';
     position: absolute;
-    width: 10px; /* 그림자 크기 */
-    height: 10px;
+    width: 11px; /* 그림자 크기 */
+    height: 11px;
     background-color: rgba(0, 0, 0, 0.3); /* 그림자 색상 */
     border-radius: 50%; /* 동그란 모양 */
     top: 50%;
@@ -281,4 +282,26 @@
     right: -5px; /* 오른쪽 그림자 위치 */
   }
   
+  .index-groups {
+    position: absolute;
+    right: -70px;
+    top: 7%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* 클립 그룹 간 간격 */
+  }
+
+  .index {
+    background-color: rgb(255, 255, 255, 0.8);
+    width: 75px;
+    height: 30px;
+    border-radius: 5px;
+    border: 1.5px solid #a5a5a5;
+  }
+
+  .index p {
+    margin: 6px;
+    margin-left: 8px;
+    font-size: 13px;
+  }
   
