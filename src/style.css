@@ -136,7 +136,7 @@
     margin-top: 15px;
     width: 150px;
     height: 140px;
-    border: 1.5px solid #ff2919;
+    border: 1.5px solid red;
   }
 
   .profile-img img
@@ -157,7 +157,7 @@
 
   .discription p {
     font-size: 13px;
-    color: red;
+    color: pink;
     margin: 3px;
   }
 
