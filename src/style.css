@@ -16,7 +16,6 @@
   
   .book-container {
     display: flex;
-    z-index: -3;
   }
 
   .left-wing img,
@@ -24,7 +23,7 @@
     position: absolute; /* 레이아웃에서 제외 */
     width: auto;
     height: auto;
-    z-index: 1;
+    z-index: 3;
   }
 
   .left-wing img {
@@ -228,6 +227,7 @@
 
     border: 1.5px solid rgb(86, 84, 84, 0.3); /* 기본 테두리 */
     border-radius: 10px; /* 모서리를 둥글게 */
+    z-index: 2;
   }
 
   .clip-groups {
@@ -279,34 +279,41 @@
   }
   
   .index-groups {
-    position: absolute;
-    right: -70px;
-    top: 7%;
+    position: relative;
+    right: 70px;
+    top: 110px;
     display: flex;
     flex-direction: column;
     gap: 10px; /* 클립 그룹 간 간격 */
+    pointer-events: none;
   }
 
   .index {
     display: block;
-    background-color: rgb(255, 255, 255, 0.8);
+    background-color: rgb(255, 255, 255, 0.7);
     width: 75px;
     height: 30px;
     border-radius: 5px;
     border: 1.5px solid #a5a5a5;
     position: relative;
+    pointer-events: auto; /* 클릭 가능하게 활성화 */
     cursor: pointer; /* 클릭 가능하게 설정 */
-    pointer-events: auto; /* 클릭 이벤트 활성화 */
-    z-index: 2; /* index 자체가 앞에 오도록 설정 */
+    z-index: 1;
+  }
+
+  .index:hover {
+    text-decoration: underline;
   }
 
   .index:active {
-    text-decoration-line: underline;
+    transform: scale(0.95); /* 클릭 시 살짝 축소 */
+    background-color: rgba(150, 150, 150, 0.7); /* 클릭 시 색상 변경 */
   }
 
   .index p {
-    margin: 7px;
-    font-size: 12px;
+    margin: 8px;
+    margin-left: 10px;
+    font-size: 11px;
     text-decoration: none; /* 기본적으로 밑줄 제거 */
   } 
   
@@ -319,7 +326,6 @@
     height: 100%;
     background-color: rgba(192, 160, 225, 0.7); /* 다른 색상 */
     border-radius: 0 3px 3px 0; /* 오른쪽 끝 부분 둥글게 */
-    z-index: 1;
   }
 
   .index.index2::after {
@@ -331,7 +337,6 @@
     height: 100%;
     background-color: rgba(241, 94, 94, 0.7); /* 원하는 색상 */
     border-radius: 0 3px 3px 0; /* 오른쪽 끝 부분 둥글게 */
-    z-index: 1;
   }
   
   .index.index3::after {
@@ -343,7 +348,6 @@
     height: 100%;
     background-color: rgba(153, 204, 255, 0.7); /* 다른 색상 */
     border-radius: 0 3px 3px 0; /* 오른쪽 끝 부분 둥글게 */
-    z-index: 1;
   }
   
   .index.index4::after {
@@ -355,7 +359,6 @@
     height: 100%;
     background-color: rgb(153, 255, 153, 0.7) ; /* 다른 색상 */
     border-radius: 0 3px 3px 0; /* 오른쪽 끝 부분 둥글게 */
-    z-index: 1;
   }
   
   .index.index5::after {
@@ -367,7 +370,6 @@
     height: 100%;
     background-color: rgb(255, 255, 153, 0.7); /* 다른 색상 */
     border-radius: 0 3px 3px 0; /* 오른쪽 끝 부분 둥글게 */
-    z-index: 1;
   }
   
   .index.index6::after {
@@ -379,7 +381,6 @@
     height: 100%;
     background-color: rgba(255, 153, 209, 0.7); /* 다른 색상 */
     border-radius: 0 3px 3px 0; /* 오른쪽 끝 부분 둥글게 */
-    z-index: 1;
   }
   
   
