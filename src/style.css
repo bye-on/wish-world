@@ -64,7 +64,7 @@
   
   .page.right {
     justify-content: left; /* 가로 중앙 정렬 */
-    width: 700px; /* 각 사각형 너비 */
+    width: 600px; /* 각 사각형 너비 */
     height: 600px; /* 각 사각형 높이 */
     border-left: none; /* 오른쪽 페이지는 왼쪽 테두리를 없앰 */
 
@@ -280,7 +280,7 @@
   
   .index-groups {
     position: relative;
-    right: 70px;
+    right: 65px;
     top: 110px;
     display: flex;
     flex-direction: column;
@@ -291,7 +291,7 @@
   .index {
     display: block;
     background-color: rgb(255, 255, 255, 0.7);
-    width: 75px;
+    width: 82px;
     height: 30px;
     border-radius: 5px;
     border: 1.5px solid #a5a5a5;
@@ -312,7 +312,7 @@
 
   .index p {
     margin: 8px;
-    margin-left: 10px;
+    margin-left: 16px;
     font-size: 11px;
     text-decoration: none; /* 기본적으로 밑줄 제거 */
   } 
