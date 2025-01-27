@@ -51,15 +51,15 @@
 
   .calendar {
     margin-top: 20px;
-    width: 150px;
+    width: 160px;
     height: 140px;
-    border: 1.5px solid red;
+    border: 1.5px solid rgb(0, 153, 255);
     border-radius: 10px;
   }
 
   .folder-container {
-    width: 80%;
-    margin-top: 10px;
+    width: 85%;
+    margin-top: 3px;
     font-family: Arial, sans-serif;
   }
   
@@ -83,6 +83,7 @@
     font-weight: bold;
     color: navy;
     margin: 3px;
+    cursor: pointer;
   }
   
   .sub-folder p {
