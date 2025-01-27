@@ -1,0 +1,86 @@
+* {
+    box-sizing: border-box;
+    margin: 0px;
+  }
+  
+  html,
+  body {
+    width: 100%;
+    height: 100%;
+  }
+
+  .wrapper {
+    width: 100%;
+    height: 100%;
+    padding: 3px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .title {
+    color: #55b2e4;
+    margin: 5px;
+    margin-top: 15px;
+    padding-left: 10px;
+    font-size: 14px;
+    font-weight: 700;
+    width: 90%;
+    white-space: pre;
+  }
+
+  .divideLine {
+    width: 85%;
+    border-top: 1px solid rgb(189, 189, 189);
+    display: flex;
+    flex-direction: row;
+  }
+
+  .frame { 
+    display: flex;
+    flex-direction: column; /* 세로로 정렬 */
+    align-items: center; /* 중앙 정렬 */
+    margin: 5px;
+    width: 95%; 
+    height: 100%;
+
+    background-color: rgb(255, 255, 255);
+    border-radius: 10px; /* 모서리를 둥글게 */
+  }
+
+  .folder {
+    margin: 5px;
+    margin-top: 15px;
+    width: 170px;
+    height: 150px;
+    border-top: 1.5px dashed #c9c9c9;
+    border-bottom: 1.5px dashed #c9c9c9;
+  }
+
+  .folder::before {
+    /*이미지 삽입*/
+  }
+
+  .sub-folder {
+
+  }
+
+  .sub-folder::before {
+
+  }
+
+  .folder p {
+    font-size: 13px;
+    font-weight: bold;
+    color: navy;
+    margin: 3px;
+  }
+
+  .sub-folder p {
+    font-size: 13px;
+    color: navy;
+    margin: 3px;
+  }
+

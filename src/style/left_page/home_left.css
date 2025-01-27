@@ -49,8 +49,8 @@
   .discription {
     margin: 5px;
     margin-top: 15px;
-    width: 170px;
-    height: 150px;
+    width: 150px;
+    height: 170px;
     border-top: 1.5px dashed #c9c9c9;
     border-bottom: 1.5px dashed #c9c9c9;
   }
@@ -62,7 +62,7 @@
   }
 
   .gimochi-box {
-    margin: 4px;
+    margin-top: 4px;
     padding-left: 10px;
     width: 150px;
     height: 30px;
@@ -74,8 +74,9 @@
 
   .gimochi-box p {
     font-family: 'YComputer';
-    font-size: 13px;
+    font-size: 12px;
+    font-weight: 700;
     margin: 0; /* 기본 margin 제거 */
-    margin-top: 7px;
+    margin-top: 5px;
     color: rgb(60, 186, 218);
   }
