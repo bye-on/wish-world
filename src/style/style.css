@@ -104,6 +104,10 @@
     background: none;
   }
 
+  .inner-page.left.inner-top p {
+    margin-top: 20px;
+  }
+
   .inner-page.left.inner-bottom {
     background-color: rgb(236, 236, 236);
 
