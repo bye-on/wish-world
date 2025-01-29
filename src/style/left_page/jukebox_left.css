@@ -58,12 +58,14 @@
   }
   
   .folder {
+    font-size: 12px;
     position: relative;
     margin-bottom: 5px;
   }
 
   .folder p::before {
     content: '📁 ';
+    font-size: 13px;
   }
 
   .sub-folder {
@@ -73,15 +75,13 @@
   }
 
   .folder p {
-    font-size: 13px;
-    font-weight: bold;
+    font-weight: 600;
     color: navy;
     margin: 3px;
     cursor: pointer;
   }
   
   .sub-folder p {
-    font-size: 13px;
     font-weight: lighter;
     color: navy;
     margin: 3px;

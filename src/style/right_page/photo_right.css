@@ -1,0 +1,105 @@
+* {
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+}
+
+.divideLine {
+    width: 93%;
+    border-top: 1px dashed rgb(196, 196, 196);
+    margin-left: 15px;
+    display: flex;
+    flex-direction: row;
+}
+
+.diaryFrame {
+    position: relative;
+    width: 90%;
+    height: 100%;
+    border: 1px solid rgb(218, 218, 218);
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+    margin-left: 25px;
+}
+
+.diaryHeader {
+    width: 100%;
+    height: 30px;
+    background: rgb(0,0,0,0.1);
+    text-align: center;
+}
+
+.diaryHeader p {
+    padding: 20px;
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.date {
+    margin-left: 50px;
+
+    font-size: 12px;
+    color: rgb(202, 202, 202);
+}
+
+.diaryContent {
+    width: 90%;
+    padding: 30px;
+}
+
+.diaryContent p {
+    font-size: 13px;
+    color: rgb(110, 110, 110);
+}
+
+.diaryFrame p {
+    padding: 5px;
+    padding-left: 15px;
+    color: rgb(110, 110, 110);
+    font-size: 12px;
+}
+
+.commentFrame {
+    width: 95%;
+    margin: 10px;
+    padding: 7px;
+    background-color: rgb(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+}
+
+.comment {
+    position: relative;
+    padding-left: 0px;
+    font-size: 12px;
+    color: rgb(77, 77, 77);
+    font-size: 12px;
+    margin-left: 10px; /* 들여쓰기 적용 */
+}
+
+.recomment {
+    position: relative;
+    color: rgb(77, 77, 77);
+    font-size: 12px;
+    margin-left: 40px; /* 대댓글 들여쓰기 */
+}
+
+.recomment::before {
+    content: '⤷';
+}
+
+.userName {
+    color: rgb(111, 168, 190);
+    font-size: 12px;
+}
+
+.userName::after {
+    color: grey;
+    content: ' : ';
+}

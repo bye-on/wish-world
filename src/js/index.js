@@ -12,19 +12,19 @@ const menuHome = () => {
     document.getElementById("menuGuestBook").style = "color: black; z-index: 1;"  
 }
 
-const menuProfile = () => {
-  // 왼쪽 iframe의 src 업데이트
-  document.getElementById("leftFrame").setAttribute("src", "./left_page/profile_left.html");
-  // 오른쪽 iframe의 src 업데이트
-  document.getElementById("rightFrame").setAttribute("src", "./right_page/profile_right.html");
+// const menuProfile = () => {
+//   // 왼쪽 iframe의 src 업데이트
+//   document.getElementById("leftFrame").setAttribute("src", "./left_page/profile_left.html");
+//   // 오른쪽 iframe의 src 업데이트
+//   document.getElementById("rightFrame").setAttribute("src", "./right_page/profile_right.html");
 
-  document.getElementById("menuHome").style = "color: black; z-index: 1;"
-  document.getElementById("menuProfile").style = "color: black; z-index: 2;"  
-  document.getElementById("menuDiary").style = "color: black; z-index: 1;"  
-  document.getElementById("menuJukeBox").style = "color: black; z-index: 1;"  
-  document.getElementById("menuPhoto").style = "color: black; z-index: 1;" 
-  document.getElementById("menuGuestBook").style = "color: black; z-index: 1;"      
-}
+//   document.getElementById("menuHome").style = "color: black; z-index: 1;"
+//   document.getElementById("menuProfile").style = "color: black; z-index: 2;"  
+//   document.getElementById("menuDiary").style = "color: black; z-index: 1;"  
+//   document.getElementById("menuJukeBox").style = "color: black; z-index: 1;"  
+//   document.getElementById("menuPhoto").style = "color: black; z-index: 1;" 
+//   document.getElementById("menuGuestBook").style = "color: black; z-index: 1;"      
+// }
 
 const menuDiary = () => {
   // 왼쪽 iframe의 src 업데이트

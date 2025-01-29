@@ -19,11 +19,12 @@ button {
 }
 
 .wrapper {
-    width: 100%;
-    height: 100%;
+    width: 95%;
+    height: 95%;
     background: #a5ddfd;
     border-radius: 8px;
-}
+    box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.1);
+}   
    
 .wrapper .nav {
     width: 95%;
@@ -66,7 +67,6 @@ button {
 .calendar ul li {
     width: calc(100% / 7);
     position: relative;
-    text-align: right;
     color: #aaa;
 }
 .calendar .days li {
@@ -80,7 +80,12 @@ button {
 }
 
 .days li.active {
-    color: #000;
+    background-color: #a5ddfd;
+    color: #fff;
+    border: 1px solid #008aff;
+    width: 17px;
+    height: 17px;
+    border-radius: 5px;
 }
 
 .calendar .days li::before {

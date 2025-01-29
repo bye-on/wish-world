@@ -143,8 +143,8 @@
     background-color: rgb(236, 236, 236);
     width: 95%; /* 부모의 90% 너비 */
     height: 90%; /* 부모의 80% 높이 */
+  
     border-left: none; /* 오른쪽 페이지는 왼쪽 테두리를 없앰 */
-
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
   }
@@ -174,6 +174,9 @@
   .inner-page.right.inner-bottom {
     position: relative;
     display: flex;
+    justify-content: center;
+    align-items: center;
+
     width: 95%; /* 부모의 90% 너비 */
     height: 88%; /* 부모의 80% 높이 */
 
