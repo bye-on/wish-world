@@ -32,10 +32,20 @@ db.connect(err => {
 // 📌 [1] 게시글 작성 API
 app.post("/diarys", (req, res) => {
     const { content, author } = req.body;
-    const sql = "INSERT INTO diarys (content, author) VALUES (?, ?)";
-    db.query(sql, [content, author], (err, result) => {
+
+    // 현재 diarys 테이블에 저장된 개수 + 1을 새로운 ID로 사용
+    const getIdQuery = "SELECT COUNT(*) + 1 AS new_id FROM diarys";
+
+    db.query(getIdQuery, (err, result) => {
         if (err) return res.status(500).json({ error: err.message });
-        res.json({ success: true, id: result.insertId });
+
+        const newId = result[0].new_id;
+        const sql = "INSERT INTO diarys (id, content, author) VALUES (?, ?, ?)";
+
+        db.query(sql, [newId, content, author], (err, insertResult) => {
+            if (err) return res.status(500).json({ error: err.message });
+            res.json({ success: true, id: newId });
+        });
     });
 });
 
@@ -57,12 +67,12 @@ app.get("/diarys/:id", (req, res) => {
         if (diary.length === 0) return res.status(404).json({ error: "게시글 없음" });
 
         // 댓글 조회
-        db.query("SELECT * FROM comments WHERE diary_id = ? ORDER BY COALESCE(parent_id, id), created_at", [diaryId], (err, comments) => {
+        db.query("SELECT * FROM diary_comments WHERE diary_id = ? ORDER BY COALESCE(parent_id, id), created_at", [diaryId], (err, diary_comments) => {
             if (err) return res.status(500).json({ error: err.message });
 
             // 댓글 + 답글 정리
             const commentTree = {};
-            comments.forEach(comment => {
+            diary_comments.forEach(comment => {
                 if (!comment.parent_id) {
                     commentTree[comment.id] = { ...comment, replies: [] };
                 } else {
@@ -72,26 +82,33 @@ app.get("/diarys/:id", (req, res) => {
                 }
             });
 
-            res.json({ diary: diary[0], comments: Object.values(commentTree) });
+            res.json({ diary: diary[0], diary_comments: Object.values(commentTree) });
         });
     });
 });
 
 // 📌 [4] 댓글 & 답글 작성 API
-app.post("/comments", (req, res) => {
+app.post("/diary_comments", (req, res) => {
     const { diary_id, parent_id, content, author } = req.body;
-    const sql = "INSERT INTO comments (diary_id, parent_id, content, author) VALUES (?, ?, ?, ?)";
+    const sql = "INSERT INTO diary_comments (diary_id, parent_id, content, author) VALUES (?, ?, ?, ?)";
     db.query(sql, [diary_id, parent_id || null, content, author], (err, result) => {
         if (err) return res.status(500).json({ error: err.message });
         res.json({ success: true, id: result.insertId });
     });
 });
 
-app.get("/comments/:postId", (req, res) => {
-    const sql = "SELECT * FROM comments WHERE post_id=? ORDER BY created_at ASC";
+app.get("/diary_comments/:postId", (req, res) => {
+    const sql = "SELECT * FROM diary_comments WHERE post_id=? ORDER BY created_at ASC";
     db.query(sql, [req.params.postId], (err, result) => {
         if (err) return res.status(500).json({ error: err.message });
         res.json(result);
     });
 });
 
+app.delete("/diarys/:id", (req, res) => {
+    const sql = "DELETE FROM diarys WHERE id=?";
+    db.query(sql, [req.params.id], (err, result) => {
+        if (err) return res.status(500).json({ error: err.message });
+        res.json({ success: true });
+    });
+});
