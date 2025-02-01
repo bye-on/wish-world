@@ -30,7 +30,7 @@ const menuDiary = () => {
   // 왼쪽 iframe의 src 업데이트
   document.getElementById("leftFrame").setAttribute("src", "./left_page/diary_left.html");
   // 오른쪽 iframe의 src 업데이트
-  document.getElementById("rightFrame").setAttribute("src", "./right_page/diary_right.html");
+  document.getElementById("rightFrame").setAttribute("src", "./right_page/board.html");
 
   document.getElementById("menuHome").style = "color: black; background-color: rgb(255, 255, 255, 0.7);; z-index: 1;"
   document.getElementById("menuProfile").style = "color: black; z-index: 1;"  
