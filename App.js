@@ -112,3 +112,25 @@ app.delete("/diarys/:id", (req, res) => {
         res.json({ success: true });
     });
 });
+
+// guest book
+app.post("/guest_book", (req, res) => {
+    const { content } = req.body;
+
+    if (!content) {
+        return res.status(400).json({ error: "내용과 작성자는 필수입니다." });
+    }    
+
+    const sql = "INSERT INTO guest_book (content) VALUES (?)";
+    db.query(sql, [content, author], (err, result) => {
+        if (err) return res.status(500).json({ error: err.message });
+        res.json({ success: true, id: result.insertId });
+    });
+})
+
+app.get("/guest_book", (req, res) => {
+    db.query("SELECT * FROM guest_book ORDER BY created_at DESC", (err, results) => {
+        if (err) return res.status(500).json({ error: err.message });
+        res.json(results);
+    });
+});

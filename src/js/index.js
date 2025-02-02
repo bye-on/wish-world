@@ -70,7 +70,7 @@ const menuPhoto = () => {
 
 const menuGuestBook = () => {
   // 왼쪽 iframe의 src 업데이트
-  document.getElementById("leftFrame").setAttribute("src", "./left_page/guestbook_left.html");
+  document.getElementById("leftFrame").setAttribute("src", "./left_page/home_left.html");
   // 오른쪽 iframe의 src 업데이트
   document.getElementById("rightFrame").setAttribute("src", "./right_page/guestbook_right.html");
   

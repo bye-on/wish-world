@@ -11,6 +11,7 @@
     align-items: center;
     height: 100vh; /* 화면 전체 높이 */
     background-color: #99ebcf;
+    overflow: hidden;
     background: linear-gradient(to bottom, #99ebcf, #dde7e4, #eff1a6);
   }
   
