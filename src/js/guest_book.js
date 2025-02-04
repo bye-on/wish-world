@@ -44,9 +44,14 @@ function loadGuestBook() {
             const postElement = document.createElement("div");
             postElement.className = "guest-post";
             postElement.innerHTML = `
-                <p><strong>${post.author}</strong> ${formatDateUsingLocale(post.created_at)}</p>
+            <div class="comment-form">
+                <p>NO. <span class="numbering"><strong>${post.id}</strong></span>
+                <span class="date">  (${formatDateUsingLocale(post.created_at)})</span></p>
+            </div>
+            <div class="comments">
                 <p>${post.content.replace(/\n/g, "<br>")}</p>
-                </div>
+            </div>
+            </div>
             `;
             guestBookList.appendChild(postElement);
         });
