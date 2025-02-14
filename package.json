@@ -4,5 +4,13 @@
     "cors": "^2.8.5",
     "express": "^4.21.2",
     "mysql2": "^3.12.0"
+  },
+  "scripts": {
+    "start": "node App.js",
+    "server": "live-server --port=8080",
+    "dev": "concurrently \"npm run start\" \"npm run server\""
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
   }
 }
