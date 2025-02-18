@@ -10,6 +10,34 @@
   <script src="../js/index.js"></script>
 </head>
 <body>
+  <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-storage.js"></script>
+
+  <script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-analytics.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+  
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    const firebaseConfig = {
+      apiKey: "AIzaSyAusHTZq3khKqvsy8lqQzNlxyZqw3A2w7E",
+      authDomain: "wish-world-desu.firebaseapp.com",
+      databaseURL: "https://wish-world-desu-default-rtdb.firebaseio.com",
+      projectId: "wish-world-desu",
+      storageBucket: "wish-world-desu.firebasestorage.app",
+      messagingSenderId: "640167301597",
+      appId: "1:640167301597:web:56c5b74e74c3da4bf7a634",
+      measurementId: "G-D6HXKBP9NP"
+    };
+  
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+  </script>
     <div class="book-container">
         <div class="page left">
           <div class="inner-page left">
@@ -71,80 +99,6 @@
       </div>
 
       <div id="player"></div>
-
       <script src="https://www.youtube.com/iframe_api"></script>
-    <script>
-        var tag = document.createElement('script');
-
-        tag.src = "https://www.youtube.com/embed/";
-        var firstScriptTag = document.getElementsByTagName('script')[0];
-        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-        
-        var player;
-
-        function onYouTubeIframeAPIReady() {
-            player = new YT.Player('player', {
-            height: '0',
-            width: '0',
-            videoId: 'u0JxxLZpc3E',
-            playerVars: {
-                autoplay : 1,
-                loop: 1,
-                playlist: 'u0JxxLZpc3E',
-            },
-            events: {
-                'onReady': onPlayerReady,
-                'onStateChange': onPlayerStateChange
-            }
-            });
-        }
-
-        function addSong() {
-            const title = document.getElementById('songTitle').value;
-            const artist = document.getElementById('artist').value;
-            const url = document.getElementById('youtubeUrl').value;
-            const videoId = url.split('v=')[1]?.split('&')[0];
-            if (!title || !artist || !videoId) return alert("올바른 정보를 입력하세요!");
-            
-            const songList = document.getElementById('songList');
-            const li = document.createElement('li');
-            li.innerHTML = `<input type="checkbox" class="song-check" data-id="${videoId}"> ${title} - ${artist}`;
-            songList.appendChild(li);
-        }
-
-        function onPlayerStateChange(event) {
-            if (event.data == YT.PlayerState.ENDED) {
-            console.log("onPlayerStateChange:",event.data,"ENDED");
-            } else if (event.data == YT.PlayerState.PLAYING) {
-            console.log("onPlayerStateChange:",event.data,"PLAYING");
-            } else if (event.data == YT.PlayerState.PAUSED) {
-            console.log("onPlayerStateChange:",event.data,"PAUSED");
-            } else if (event.data == YT.PlayerState.BUFFERING) {
-            console.log("onPlayerStateChange:",event.data,"BUFFERING");
-            } else if (event.data == YT.PlayerState.CUED) {
-            console.log("onPlayerStateChange:",event.data,"CUED");
-            }
-        }
-
-
-        // 4. The API will call this function when the video player is ready.
-        function onPlayerReady(event) {
-            event.target.playVideo();
-        }
-
-        // 5. The API calls this function when the player's state changes.
-        //    The function indicates that when playing a video (state=1),
-        //    the player should play for six seconds and then stop.
-        var done = false;
-        function onPlayerStateChange(event) {
-            if (event.data == YT.PlayerState.PLAYING && !done) {
-            // setTimeout(stopVideo, 6000);
-            // done = true;
-            }
-        }
-        function stopVideo() {
-            player.stopVideo();
-        }
-    </script>
 </body>
 </html>

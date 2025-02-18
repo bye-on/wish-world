@@ -4,35 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cyworld Jukebox</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
-        }
-        .jukebox {
-            width: 95%;
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        .song-list {
-            list-style: none;
-            padding: 0;
-        }
-        .song-list li {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 5px;
-            border-bottom: 1px solid #ddd;
-        }
-        .controls {
-            margin-top: 10px;
-            display: flex;
-            justify-content: space-between;
-        }
-    </style>
+    <link rel="stylesheet" href="../../style/right_page/jukebox_right.css">
 </head>
 <body>
     <div class="jukebox">
@@ -43,11 +15,14 @@
             <button onclick="nextSong()">⏭ 다음</button>
         </div>
         <h3>🎼 곡 추가</h3>
-        <input type="text" id="songTitle" placeholder="곡명">
+        <input type="text" id="title" placeholder="곡명">
         <input type="text" id="artist" placeholder="아티스트">
-        <input type="text" id="youtubeUrl" placeholder="YouTube 링크">
+        <input type="text" id="path" placeholder="YouTube 링크">
         <button onclick="addSong()">추가</button>
         <div id="player"></div>
     </div>
+    <div id="player"></div>
+    <script src="https://www.youtube.com/iframe_api"></script>
+    <script src="../../js/jukebox.js"></script>
 </body>
 </html>
