@@ -14,30 +14,6 @@
   <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-auth.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-firestore.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-storage.js"></script>
-
-  <script>
-    const firebaseConfig = {
-      apiKey: "AIzaSyAusHTZq3khKqvsy8lqQzNlxyZqw3A2w7E",
-      authDomain: "wish-world-desu.firebaseapp.com",
-      databaseURL: "https://wish-world-desu-default-rtdb.firebaseio.com",
-      projectId: "wish-world-desu",
-      storageBucket: "wish-world-desu.firebasestorage.app",
-      messagingSenderId: "640167301597",
-      appId: "1:640167301597:web:56c5b74e74c3da4bf7a634",
-      measurementId: "G-D6HXKBP9NP"
-    };
-  
-    // Initialize Firebase
-    firebase.initializeApp(firebaseConfig);
-  </script>
-  <script>
-    const db = firebase.firestore();
-    db.collection('diary').get().then((res) => {
-      res.forEach(element => {
-        console.log(element.data()); 
-      });
-    })
-  </script>
     <div class="book-container">
         <div class="page left">
           <div class="inner-page left">

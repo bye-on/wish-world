@@ -1,3 +1,12 @@
+import { db } from "../content/firebase.js";
+import { collection, addDoc, getDocs, query, orderBy } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js";
+
+db.collection('diary').get().then((res) => {
+    res.forEach(element => {
+      console.log(element.data()); 
+    });
+})
+
 document.addEventListener("DOMContentLoaded", function () {
     loadGuestBook(); // 페이지 로드 시 방명록 목록 불러오기
 
