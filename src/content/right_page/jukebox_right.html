@@ -11,25 +11,15 @@
     <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-firestore.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-storage.js"></script>
     <div class="jukebox">
-        <h2>🎵 Cyworld Jukebox</h2>
         <ul class="song-list" id="songList"></ul>
         <div class="controls">
             <button onclick="playSelected()">▶ 재생</button>
             <button onclick="nextSong()">⏭ 다음</button>
+            <button onclick="updateIsPlaying()">등록</button>
         </div>
-        <h3>🎼 곡 추가</h3>
-        <form id="songForm">
-            <input type="checkbox" id="isPlay">
-            <input type="number" id="no" placeholder="no">
-            <input type="number" id="id" placeholder="id">
-            <input type="text" id="title" placeholder="곡명">
-            <input type="text" id="artist" placeholder="아티스트">
-            <input type="text" id="path" placeholder="YouTube 링크">
-            <button type="submit">확인</button>
-        </form>
+        <div id="song-list"></div>
     </div>
-    <div id="song-list">
-    </div>
+    <div id="player"></div>
     <script src="https://www.youtube.com/iframe_api"></script>
     <script type="module" src="../../js/jukebox.js"></script>
 </body>
