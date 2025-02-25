@@ -56,10 +56,8 @@ function addSong() {
         artist: artist,
     })
     .then((data) => {
-      if (data.success) {
-        document.getElementById("songList").reset();
-        loadSongList();
-      }
+      document.getElementById("songForm").reset();
+      loadSongList();
     })
     .catch((error) => console.error("Error:", error));
 }
