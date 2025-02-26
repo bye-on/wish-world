@@ -12,7 +12,6 @@ class Song {
       this.path = path;       // 노래 경로 (유튜브 ID 등)
   }
 
-  // isPlay 상태를 토글하는 메서드
   togglePlay() {
       this.isPlay = !this.isPlay;
   }
@@ -20,7 +19,8 @@ class Song {
 
 document.addEventListener("DOMContentLoaded", function () {
     loadSongList(); // 페이지 로드 시 방명록 목록 불러오기
-
+    
+    document.getElementById("updateList").addEventListener('click', updateIsPlaying);
     // document.getElementById("songForm").addEventListener("submit", function (event) {
     //     event.preventDefault();
     //     addSong();
@@ -98,23 +98,7 @@ document.getElementById("song-list").addEventListener("change", function (event)
       playLists.forEach(song => {
           if (song.id == songId) {
               song.togglePlay();
-              // db.collection('jukebox').where("id", "==", song.id).get().then(function(f) {
-              //   f.forEach(function(document) {
-              //     document.ref.update({
-              //       isPlay: song.isPlay
-              //     });
-              //   });
-              // })
-
-              db.collection('jukebox').get()
-                .then((querySnapshot) => {
-                  querySnapshot.forEach((doc) => {
-                    if (doc.data().id === song.id) {
-                      doc.ref.update({ isPlay: song.isPlay });
-                    }
-                  });
-                });
-
+              changeList.set(song.id, song.isPlay);
           }
       });
   }
@@ -123,13 +107,15 @@ document.getElementById("song-list").addEventListener("change", function (event)
 function updateIsPlaying()
 {
   const playListRef = db.collection('jukebox');
-      for(let [key, value] of changeList)
-      {
-        playListRef.where("id", "==", key).get().then((e)=>
-        {
-          e.forEach(element => {
-            console.log(element.data());
-          });
+  for (let [key, value] of changeList)
+  {
+    playListRef.where("id", "==", key).get().then(function(snapshot) {
+      snapshot.forEach(function(doc) {
+        doc.ref.update({
+          isPlay: value
         })
-      }
+      });
+    });
+  }
+  changeList.clear();
 }
