@@ -1,3 +1,6 @@
+import { db } from "../content/firebase.js";
+import { parseAfterDelimiter } from "./utils.js";
+
 var tag = document.createElement("script");
 
 tag.src = "https://www.youtube.com/embed/";
@@ -6,8 +9,26 @@ firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
 var player;
 
-const playlist = [ "UrMOr7JCwbM", "yA1r0U-nojg" ]
+export let playlist = [ ];
 var videoIndex = 0;
+
+init();
+
+const delimiter = "watch?v=";
+function init()
+{
+    db.collection('jukebox').orderBy("id").get().then((element)=>{
+      element.forEach(doc => {
+        if(doc.data().isPlay == true)
+        {
+          const result = parseAfterDelimiter(doc.data().path, delimiter);
+          playlist.push(result);
+        }
+      });
+    }).then(()=>{
+      setUpPlayer();
+    })
+}
 
 function setUpPlayer()
 {
@@ -38,8 +59,6 @@ function onPlayerStateChange(event) {
     player.loadVideoById(playlist[videoIndex]); // 다음 비디오 로드 및 재생
   }
 }
-
-// setUpPlayer();
 
 function stopVideo() {
     player.stopVideo();

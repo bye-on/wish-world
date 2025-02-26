@@ -1,5 +1,8 @@
 import { db } from "../content/firebase.js";
+// import { playlist } from "./music_play.js";
+import { parseAfterDelimiter } from "./utils.js";
 
+let songLists = [];
 let playLists = [];
 
 class Song {
@@ -47,7 +50,7 @@ function addSong() {
         title: title,
         artist: artist,
     })
-    .then((data) => {
+    .then(() => {
       document.getElementById("songForm").reset();
       loadSongList();
     })
@@ -64,9 +67,9 @@ function loadSongList() {
 
             const song = 
               new Song(music.no, music.id, music.isPlay, music.title, music.artist, music.path);
-            playLists.push(song);
+            songLists.push(song);
         });
-        renderSongList(playLists); // UI에 출력
+        renderSongList(songLists); // UI에 출력
     }).catch((error) => console.error("Error:", error));
 }
 
@@ -95,7 +98,7 @@ document.getElementById("song-list").addEventListener("change", function (event)
       const songId = event.target.dataset.id;
 
       // DTO 리스트에서 해당 노래 찾아서 isPlay 변경
-      playLists.forEach(song => {
+      songLists.forEach(song => {
           if (song.id == songId) {
               song.togglePlay();
               changeList.set(song.id, song.isPlay);
@@ -104,18 +107,42 @@ document.getElementById("song-list").addEventListener("change", function (event)
   }
 });
 
-function updateIsPlaying()
-{
+function updateIsPlaying() {
   const playListRef = db.collection('jukebox');
-  for (let [key, value] of changeList)
-  {
-    playListRef.where("id", "==", key).get().then(function(snapshot) {
-      snapshot.forEach(function(doc) {
-        doc.ref.update({
-          isPlay: value
-        })
+  let updatePromises = []; // 비동기 업데이트를 추적할 배열
+
+  for (let [key, value] of changeList) {
+    let promise = playListRef.where("id", "==", key).get().then(snapshot => {
+      let batchUpdates = [];
+      snapshot.forEach(doc => {
+        batchUpdates.push(doc.ref.update({ isPlay: value }));
       });
+      return Promise.all(batchUpdates); 
     });
+
+    updatePromises.push(promise); 
   }
-  changeList.clear();
+
+  // 모든 업데이트가 완료된 후 실행
+  Promise.all(updatePromises).then(() => {
+    changeList.clear();
+    return getPlayList(); // getPlayList 실행
+  }).catch(error => {
+    console.error("업데이트 중 오류 발생:", error);
+  });
+}
+
+function getPlayList() {
+  playLists.length = 0; // 기존 배열 초기화
+
+  return db.collection('jukebox').where("isPlay", "==", true).get().then(snapshot => {
+    snapshot.forEach(doc => {
+      const music = doc.data();
+
+      const song = new Song(music.no, music.id, music.isPlay, music.title, music.artist, music.path);
+      playLists.push(song);
+    });
+  }).catch(error => {
+    console.error("플레이리스트 가져오기 오류:", error);
+  });
 }
