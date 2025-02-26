@@ -1,6 +1,7 @@
 import { db } from "../content/firebase.js";
 // import { playlist } from "./music_play.js";
 import { parseAfterDelimiter } from "./utils.js";
+import { getUserId } from "./init.js";
 
 let songLists = [];
 let playLists = [];
@@ -21,7 +22,7 @@ class Song {
 }
 
 document.addEventListener("DOMContentLoaded", function () {
-    loadSongList(); // 페이지 로드 시 방명록 목록 불러오기
+    getPlayList();
     
     document.getElementById("updateList").addEventListener('click', updateIsPlaying);
     // document.getElementById("songForm").addEventListener("submit", function (event) {
@@ -57,20 +58,21 @@ function addSong() {
     .catch((error) => console.error("Error:", error));
 }
 
-function loadSongList() {
-    const jukeboxList = document.getElementById("song-list");
-    jukeboxList.innerHTML = ""; // 기존 목록 초기화
+async function getPlayList() {
+  const userId = getUserId();
+  const userRef = db.collection('playlist').doc(userId);
 
-    db.collection('jukebox').orderBy('id').get().then((element) => {
-        element.forEach((doc) => {
-            const music = doc.data();
-
-            const song = 
-              new Song(music.no, music.id, music.isPlay, music.title, music.artist, music.path);
-            songLists.push(song);
-        });
-        renderSongList(songLists); // UI에 출력
-    }).catch((error) => console.error("Error:", error));
+  try {
+    const doc = await userRef.get();
+    if (doc.exists) {
+      playLists = doc.data().playList || [];
+      renderSongList(playLists);
+    } else {
+      console.warn(`⚠️ ${userId}의 플레이리스트가 없음.`);
+    }
+  } catch (error) {
+    console.error("🔥 플레이리스트 가져오기 오류:", error);
+  }
 }
 
 function renderSongList(songList) {
@@ -97,53 +99,67 @@ document.getElementById("song-list").addEventListener("change", function (event)
   if (event.target.classList.contains("song-checkbox")) {
       const songId = event.target.dataset.id;
 
-      // DTO 리스트에서 해당 노래 찾아서 isPlay 변경
-      songLists.forEach(song => {
+      // 플레이리스트 내에서 해당 노래 찾아서 isPlay 변경
+      playLists.forEach(song => {
           if (song.id == songId) {
-              song.togglePlay();
+              song.isPlay = !song.isPlay;
               changeList.set(song.id, song.isPlay);
           }
       });
+      console.log(changeList);
   }
 });
 
-function updateIsPlaying() {
-  const playListRef = db.collection('jukebox');
-  let updatePromises = []; // 비동기 업데이트를 추적할 배열
+async function updateIsPlaying() {
+  const userId = getUserId(); // 현재 사용자 ID 가져오기
+  const userRef = db.collection('playlist').doc(userId); // 사용자의 플레이리스트 문서 참조
 
-  for (let [key, value] of changeList) {
-    let promise = playListRef.where("id", "==", key).get().then(snapshot => {
-      let batchUpdates = [];
-      snapshot.forEach(doc => {
-        batchUpdates.push(doc.ref.update({ isPlay: value }));
-      });
-      return Promise.all(batchUpdates); 
-    });
+  try {
+      const doc = await userRef.get();
+      if (!doc.exists) {
+          console.warn("⚠️ 플레이리스트 데이터 없음.");
+          return;
+      }
 
-    updatePromises.push(promise); 
+      let userPlayList = doc.data().playList; // 기존 플레이리스트 가져오기
+
+      // 변경된 노래들의 isPlay 상태 업데이트
+      for (let [songId, isPlay] of changeList) {
+          userPlayList = userPlayList.map(song => 
+              song.id === songId ? { ...song, isPlay } : song
+          );
+      }
+
+      await userRef.update({ playList: userPlayList }); // DB 업데이트
+      console.log(`✅ ${userId}의 플레이리스트 업데이트 완료`);
+
+      changeList.clear(); // 변경 목록 초기화
+      await reloadPlayList(); // 최신 플레이리스트 다시 불러오기/
+  } catch (error) {
+      console.error("🔥 플레이리스트 업데이트 오류:", error);
   }
-
-  // 모든 업데이트가 완료된 후 실행
-  Promise.all(updatePromises).then(() => {
-    changeList.clear();
-    return getPlayList(); // getPlayList 실행
-  }).catch(error => {
-    console.error("업데이트 중 오류 발생:", error);
-  });
 }
 
-function getPlayList() {
-  playLists.length = 0; // 기존 배열 초기화
+async function reloadPlayList() {
+  const userId = getUserId(); // 현재 사용자 ID 가져오기
+  const userRef = db.collection('playlist').doc(userId); // 사용자의 플레이리스트 문서 참조
 
-  return db.collection('jukebox').where("isPlay", "==", true).get().then(snapshot => {
-    snapshot.forEach(doc => {
-      const music = doc.data();
+  try {
+      const doc = await userRef.get();
+      if (!doc.exists) {
+          console.warn(`⚠️ ${userId}의 플레이리스트가 없음.`);
+          return;
+      }
 
-      const song = new Song(music.no, music.id, music.isPlay, music.title, music.artist, music.path);
-      playLists.push(song);
-    });
-  }).catch(error => {
-    console.error("플레이리스트 가져오기 오류:", error);
-  });
+      const userPlayList = doc.data().playList || []; // 사용자의 플레이리스트 가져오기
+
+      // isPlay가 true인 노래만 필터링하여 playLists에 저장
+      playLists = userPlayList
+          .filter(song => song.isPlay)
+          .map(music => new Song(music.no, music.id, music.isPlay, music.title, music.artist, music.path));
+
+      console.log(`🎵 ${userId}의 활성화된 플레이리스트:`, playLists);
+    } catch (error) {
+        console.error("🔥 플레이리스트 가져오기 오류:", error);
+    }
 }
-

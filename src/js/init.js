@@ -2,12 +2,12 @@ import { db } from "../content/firebase.js";
 
 document.addEventListener("DOMContentLoaded", async function () {
     await initializeUserPlayList();
-    await getPlayList();
+    // await getPlayList();
   
     // document.getElementById("updateList").addEventListener("click", updateIsPlaying);
 });
 
-function getUserId() {
+export function getUserId() {
     let userId = document.cookie.replace(/(?:(?:^|.*;\s*)userId\s*=\s*([^;]*).*$)|^.*$/, "$1");
     if (!userId) {
       userId = "user_" + Math.random().toString(36).substring(2, 15); // 랜덤한 userId 생성
@@ -18,14 +18,12 @@ function getUserId() {
 
 async function initializeUserPlayList() {
     const userId = getUserId();
-    const userPlayListRef = db.collection('playList').doc(userId);
+    const userPlayListRef = db.collection('playlist').doc(userId);
   
     try {
       const userDoc = await userPlayListRef.get();
   
       if (!userDoc.exists) {
-        console.log("🆕 새로운 사용자 감지: 기본 플레이리스트 생성");
-  
         const jukeboxRef = db.collection("jukebox").orderBy('id');
         const snapshot = await jukeboxRef.get();
   
@@ -42,18 +40,18 @@ async function initializeUserPlayList() {
         });
   
         await userPlayListRef.set({ playList: defaultPlayList });
-        console.log(`✅ ${userId}의 기본 플레이리스트 저장 완료`);
+        // console.log(`✅ ${userId}의 기본 플레이리스트 저장 완료`);
       } else {
-        console.log(`🎵 기존 사용자 ${userId}의 플레이리스트 불러오기 완료`);
+        // console.log(`🎵 기존 사용자 ${userId}의 플레이리스트 불러오기 완료`);
       }
     } catch (error) {
       console.error("🔥 플레이리스트 초기화 오류:", error);
     }
   }
 
-  async function updateIsPlaying() {
+async function updateIsPlaying() {
     const userId = getUserId();
-    const userRef = db.collection('playList').doc(userId);
+    const userRef = db.collection('playlist').doc(userId);
   
     try {
       const doc = await userRef.get();
@@ -73,21 +71,4 @@ async function initializeUserPlayList() {
     }
   }
 
-async function getPlayList() {
-    const userId = getUserId();
-    const userRef = db.collection('playList').doc(userId);
-  
-    try {
-      const doc = await userRef.get();
-      if (doc.exists) {
-        playLists = doc.data().playList || [];
-        console.log(`🎵 ${userId}의 플레이리스트:`, playLists);
-        renderSongList(playLists);
-      } else {
-        console.warn(`⚠️ ${userId}의 플레이리스트가 없음.`);
-      }
-    } catch (error) {
-      console.error("🔥 플레이리스트 가져오기 오류:", error);
-    }
-  }
   
