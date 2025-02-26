@@ -9,20 +9,23 @@ var player;
 const playlist = [ "UrMOr7JCwbM", "yA1r0U-nojg" ]
 var videoIndex = 0;
 
-function onYouTubeIframeAPIReady() {
-  player = new YT.Player("player", {
-    height: "0",
-    width: "0",
-    videoId: playlist[videoIndex],
-    playerVars: {
-      autoplay: 1,
-      loop: 0,
-    },
-    events: {
-      onReady: onPlayerReady,
-      onStateChange: onPlayerStateChange,
-    },
-  });
+function setUpPlayer()
+{
+    window.YT.ready(function() {
+        player = new YT.Player("player", {
+            height: "0",
+            width: "0",
+            videoId: playlist[videoIndex],
+            playerVars: {
+              autoplay: 1,
+              loop: 0,
+            },
+            events: {
+              onReady: onPlayerReady,
+              onStateChange: onPlayerStateChange,
+            },
+          });
+    })
 }
 
 function onPlayerReady(event) {
@@ -36,7 +39,7 @@ function onPlayerStateChange(event) {
   }
 }
 
-onYouTubeIframeAPIReady();
+// setUpPlayer();
 
 function stopVideo() {
     player.stopVideo();
