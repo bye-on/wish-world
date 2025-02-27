@@ -1,8 +1,9 @@
 import { db } from "../content/firebase.js";
+import { init } from "./music_play.js";
 
 document.addEventListener("DOMContentLoaded", async function () {
     await initializeUserPlayList();
-    // await getPlayList();
+    await init();
   
     // document.getElementById("updateList").addEventListener("click", updateIsPlaying);
 });

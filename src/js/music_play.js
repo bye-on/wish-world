@@ -12,11 +12,9 @@ var player;
 let playlist = [ ];
 var videoIndex = 0;
 
-init();
-
 const delimiter = "watch?v=";
 
-function init() {
+export function init() {
   const userId = getUserId(); // 현재 사용자 ID 가져오기
   const userRef = db.collection('playlist').doc(userId);
 
@@ -40,7 +38,6 @@ function init() {
     console.error("🔥 플레이리스트 초기화 오류:", error);
   });
 }
-
 
 function setUpPlayer()
 {
