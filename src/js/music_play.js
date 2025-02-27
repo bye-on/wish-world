@@ -15,8 +15,8 @@ var videoIndex = 0;
 const delimiter = "watch?v=";
 
 document.addEventListener("DOMContentLoaded", async function () {
-    await initializeUserPlayList();
-    await init();
+    await initializeUserPlayList(); // 새로운 사용자인지 확인 ? 초기화 : ""
+    await init(); // 초기화된 플레이리스트 재생
 });
 
 function init() {

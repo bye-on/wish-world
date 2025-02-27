@@ -1,28 +1,13 @@
 import { db } from "../content/firebase.js";
 // import { playlist } from "./music_play.js";
 import { parseAfterDelimiter } from "./utils.js";
-import { getUserId } from "./init.js";
+import { getUserId, songLists, Song, setSongLists } from "./init.js";
 
-let songLists = [];
 let playLists = [];
 
-class Song {
-  constructor(no, id, isPlay, title, artist, path) {
-      this.no = no;
-      this.id = id;           // 고유 식별자
-      this.isPlay = isPlay;   // 현재 재생 여부
-      this.title = title;     // 노래 제목
-      this.artist = artist;   // 아티스트
-      this.path = path;       // 노래 경로 (유튜브 ID 등)
-  }
-
-  togglePlay() {
-      this.isPlay = !this.isPlay;
-  }
-}
-
-document.addEventListener("DOMContentLoaded", function () {
-    getPlayList();
+document.addEventListener("DOMContentLoaded", async function () {
+    await getPlayList();
+    await setSongLists();
     
     document.getElementById("updateList").addEventListener('click', updateIsPlaying);
     // document.getElementById("songForm").addEventListener("submit", function (event) {
@@ -31,6 +16,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // });
 });
 
+/*
 function addSong() {
     const isPlaying = document.getElementById("isPlay").checked;
     const no = document.getElementById("no").value;
@@ -57,6 +43,7 @@ function addSong() {
     })
     .catch((error) => console.error("Error:", error));
 }
+*/
 
 async function getPlayList() {
   const userId = getUserId();
@@ -100,7 +87,7 @@ document.getElementById("song-list").addEventListener("change", function (event)
       const songId = event.target.dataset.id;
 
       // 플레이리스트 내에서 해당 노래 찾아서 isPlay 변경
-      playLists.forEach(song => {
+      songLists.forEach(song => {
           if (song.id == songId) {
               song.isPlay = !song.isPlay;
               changeList.set(song.id, song.isPlay);
@@ -111,32 +98,25 @@ document.getElementById("song-list").addEventListener("change", function (event)
 });
 
 async function updateIsPlaying() {
-  const userId = getUserId(); // 현재 사용자 ID 가져오기
-  const userRef = db.collection('playlist').doc(userId); // 사용자의 플레이리스트 문서 참조
+  const userId = getUserId();
+  const userRef = db.collection('playlist').doc(userId);
 
   try {
-      const doc = await userRef.get();
-      if (!doc.exists) {
-          console.warn("⚠️ 플레이리스트 데이터 없음.");
-          return;
-      }
+    const doc = await userRef.get();
+    if (!doc.exists) return console.warn("⚠️ 플레이리스트 데이터 없음.");
 
-      let userPlayList = doc.data().playList; // 기존 플레이리스트 가져오기
+    let userPlayList = doc.data().playList;
 
-      // 변경된 노래들의 isPlay 상태 업데이트
-      for (let [songId, isPlay] of changeList) {
-          userPlayList = userPlayList.map(song => 
-              song.id === songId ? { ...song, isPlay } : song
-          );
-      }
+    for (let [songId, isPlay] of changeList) {
+      userPlayList = userPlayList.map(song => song.id === songId ? { ...song, isPlay } : song);
+    }
 
-      await userRef.update({ playList: userPlayList }); // DB 업데이트
-      console.log(`✅ ${userId}의 플레이리스트 업데이트 완료`);
-
-      changeList.clear(); // 변경 목록 초기화
-      await reloadPlayList(); // 최신 플레이리스트 다시 불러오기/
+    await userRef.update({ playList: userPlayList });
+    console.log(`✅ ${userId}의 플레이리스트 업데이트 완료`);
+    changeList.clear();
+    await reloadPlayList(); // 최신 플레이리스트 다시 불러오기/
   } catch (error) {
-      console.error("🔥 플레이리스트 업데이트 오류:", error);
+    console.error("🔥 플레이리스트 업데이트 오류:", error);
   }
 }
 

@@ -1,5 +1,22 @@
 import { db } from "../content/firebase.js";
 
+export let songLists = [];
+
+export class Song {
+  constructor(no, id, isPlay, title, artist, path) {
+      this.no = no;
+      this.id = id;           // 고유 식별자
+      this.isPlay = isPlay;   // 현재 재생 여부
+      this.title = title;     // 노래 제목
+      this.artist = artist;   // 아티스트
+      this.path = path;       // 노래 경로 (유튜브 ID 등)
+  }
+
+  togglePlay() {
+      this.isPlay = !this.isPlay;
+  }
+}
+
 export function getUserId() {
     let userId = document.cookie.replace(/(?:(?:^|.*;\s*)userId\s*=\s*([^;]*).*$)|^.*$/, "$1");
     if (!userId) {
@@ -40,28 +57,23 @@ export async function initializeUserPlayList() {
     } catch (error) {
       console.error("🔥 플레이리스트 초기화 오류:", error);
     }
-  }
+}
 
-async function updateIsPlaying() {
-    const userId = getUserId();
-    const userRef = db.collection('playlist').doc(userId);
+export async function setSongLists()
+{
+  const userId = getUserId(); // 현재 사용자 ID 가져오기
+  const userRef = db.collection('playlist').doc(userId); // 사용자의 플레이리스트 문서 참조
   
-    try {
-      const doc = await userRef.get();
-      if (!doc.exists) return console.warn("⚠️ 플레이리스트 데이터 없음.");
-  
-      let userPlayList = doc.data().playList;
-  
-      for (let [songId, isPlay] of changeList) {
-        userPlayList = userPlayList.map(song => song.id === songId ? { ...song, isPlay } : song);
-      }
-  
-      await userRef.update({ playList: userPlayList });
-      console.log(`✅ ${userId}의 플레이리스트 업데이트 완료`);
-      changeList.clear();
-    } catch (error) {
-      console.error("🔥 플레이리스트 업데이트 오류:", error);
+  try {
+    const doc = await userRef.get();
+    if (!doc.exists) {
+        console.warn(`⚠️ ${userId}의 플레이리스트가 없음.`);
+        return;
     }
+    const userPlayList = doc.data().playList || []; // 사용자의 플레이리스트 가져오기
+    songLists = userPlayList
+      .map(music => new Song(music.no, music.id, music.isPlay, music.title, music.artist, music.path));
+  } catch (error) {
+        console.error("🔥 플레이리스트 가져오기 오류:", error);
   }
-
-  
+}
