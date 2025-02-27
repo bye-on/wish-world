@@ -1,5 +1,5 @@
 import { db } from "../content/firebase.js";
-import { getUserId } from "./init.js";
+import { getUserId, initializeUserPlayList } from "./init.js";
 import { parseAfterDelimiter } from "./utils.js";
 
 var tag = document.createElement("script");
@@ -14,7 +14,12 @@ var videoIndex = 0;
 
 const delimiter = "watch?v=";
 
-export function init() {
+document.addEventListener("DOMContentLoaded", async function () {
+    await initializeUserPlayList();
+    await init();
+});
+
+function init() {
   const userId = getUserId(); // 현재 사용자 ID 가져오기
   const userRef = db.collection('playlist').doc(userId);
 

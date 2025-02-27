@@ -1,12 +1,4 @@
 import { db } from "../content/firebase.js";
-import { init } from "./music_play.js";
-
-document.addEventListener("DOMContentLoaded", async function () {
-    await initializeUserPlayList();
-    await init();
-  
-    // document.getElementById("updateList").addEventListener("click", updateIsPlaying);
-});
 
 export function getUserId() {
     let userId = document.cookie.replace(/(?:(?:^|.*;\s*)userId\s*=\s*([^;]*).*$)|^.*$/, "$1");
@@ -17,7 +9,7 @@ export function getUserId() {
     return userId;
 }
 
-async function initializeUserPlayList() {
+export async function initializeUserPlayList() {
     const userId = getUserId();
     const userPlayListRef = db.collection('playlist').doc(userId);
   
