@@ -63,21 +63,18 @@ async function getPlayList() {
 }
 
 function renderSongList(songList) {
-  const jukeboxList = document.getElementById("song-list");
-  jukeboxList.innerHTML = ""; // 기존 목록 초기화
+  const jukeboxTable = document.getElementById("song-list");
+  // jukeboxTable.innerHTML = ""; // 기존 목록 초기화
 
-  songList.forEach((song) => {
-      const musicElement = document.createElement("div");
-      musicElement.className = "song-post";
-      musicElement.innerHTML = `
-          <div class="song-form">
-              <input type="checkbox" class="song-checkbox" data-id="${song.id}" ${song.isPlay ? "checked" : ""} />
-              <span>${song.id}</span>
-              <span>${song.title}</span>
-              <span>${song.artist}</span>
-          </div>
+  songList.forEach((song, index) => {
+      const row = document.createElement("tr");
+      row.innerHTML = `
+          <td style="width:20px"><input type="checkbox" class="song-checkbox" data-id="${song.id}" ${song.isPlay ? "checked" : ""} /></td>
+          <td align="center">${index + 1}</td>
+          <td><span style="padding-left: 10px; padding-right: 10px;">${song.title}</span></td>
+          <td><span style="padding-left: 10px; padding-right: 10px;">${song.artist}</span></td>
       `;
-      jukeboxList.appendChild(musicElement);
+      jukeboxTable.appendChild(row);
   });
 }
 

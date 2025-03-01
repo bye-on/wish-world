@@ -3,23 +3,57 @@ body {
     width: 100%;
     height: 100%;
 }
-    
+
+.jukebox-explain {
+    display: flex;
+    width: 95%;
+}
+
+.jukebox-explain p {
+    margin: 0px;
+    margin-left: auto;
+    font-size: 12px;
+}
+
+.controls {
+    display: flex;
+    margin-top: 5px;
+    width: 95%;
+}
+
+#updateList {
+    margin-left: auto;
+    font-size: 12px;
+    background-color: #ededed;
+    padding: 2.5px;
+    padding-left: 5px;
+    padding-right: 5px;
+    border: solid 0.5px rgb(119, 119, 119);
+    border-radius: 2px;
+    cursor: pointer;
+}
+
+table {
+    border-collapse: collapse;
+    width: 98%;
+    font-size: 13px;    
+}
+
+th, td {
+    border-bottom: solid 1px rgb(226, 226, 226);
+}
+
+th {
+    border-top: solid 1px rgb(212, 212, 212);
+    border-bottom: solid 1px rgb(212, 212, 212);
+
+    background-color: #ededed;
+    color: rgb(40, 40, 40);
+}
+
 .jukebox {
     margin: 10px;
     width: 95%;
     height: 95%;
     border-radius: 8px;
-    box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.1);
 }   
-
-.song-list {
-    list-style: none;
-    padding: 0;
-}
-.song-list li {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 5px;
-    border-bottom: 1px solid #ddd;
-}

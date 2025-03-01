@@ -10,17 +10,22 @@
     <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-firestore.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-storage.js"></script>
-    <div class="jukebox">
-        <ul class="song-list" id="songList"></ul>
-        <div class="controls">
-            <button onclick="playSelected()">▶ 재생</button>
-            <button onclick="nextSong()">⏭ 다음</button>
-            <button id="updateList">등록</button>
-        </div>
-        <div id="song-list"></div>
+    <div class="jukebox-explain">
+        <p><span style="color: red;">*</span> 전체공개 폴더입니다.</p>
     </div>
-    <script src="https://www.youtube.com/iframe_api"></script>
-    <div id="player"></div>
+    <div class="controls">
+        <button id="updateList">배경음악 등록</button>
+    </div>
+    <div class="jukebox">
+        <table id="song-list">           
+            <tr>
+                <th style="width:20px"><input type='checkbox' id="checkAll"></th>
+                <th scope="col" style="color: rgb(212, 212, 212);">|  <span style="color: #282828;">번호</span>  |</th>
+                <th align="left" scope="col"><span style="padding-left: 10px; padding-right: 10px;">곡명 </span></th>
+                <th align="left" scope="col"><span style="color: rgb(212, 212, 212);">| </span><span style="padding-right: 10px;">아티스트</span></th>
+            </tr>
+        </table>
+    </div>
     <script type="module" src="../../js/jukebox.js"></script>
 </body>
 </html>
