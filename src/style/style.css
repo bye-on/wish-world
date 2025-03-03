@@ -172,6 +172,17 @@
     color: darkturquoise;
   }
 
+  .redirect {
+    padding: 7px;
+    font-family: sans-serif;
+    margin-left: auto; /* 오른쪽 정렬 */
+  }
+
+  .redirect a {
+    font-size: 11px;
+    color: grey;
+  }
+
   .inner-page.right.inner-bottom {
     position: relative;
     display: flex;
