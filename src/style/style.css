@@ -79,20 +79,21 @@
   }
   
   .music-player-container {
-    padding-left: 600px;
+    padding-left: 610px;
     margin-bottom: 5px;
-    z-index: 1;
+    z-index: 5;
   }
 
   .music-player {
     display: flex;
     align-items: center;
     background-color: rgb(240, 240, 240);
+    border: 1px solid rgb(205, 205, 205);
     border-radius: 3px;
 
     gap: 3px;
     padding: 2px;
-    padding-left: 10px;
+    padding-left: 5px;
     padding-right: 7px;
   }
 
@@ -108,13 +109,43 @@
     padding: 2px;
     padding-left: 5px;
     padding-right: 5px;
-    margin-left: 18px;
+    margin-left: 20px;
 
     font-size: 11px;
     color: white;
     background-color: #a5a5a5;
     border: 1px solid darkgrey;
     border-radius: 5px
+  }
+
+  #playlist-container {
+    display: none; /* 기본적으로 숨김 */
+    position: absolute;
+    left: 0;  /* JavaScript에서 동적으로 설정 */
+    top: 0;   /* JavaScript에서 동적으로 설정 */
+    background: rgb(250, 250, 250);
+    width: 320px;
+    border-radius: 5px;
+  }
+
+  table {
+      width: 100%;
+      border-collapse: collapse;
+      border-radius: 5px;
+  }
+
+  th, td {
+      border: 1px solid #ccc;
+      padding: 5px;
+      text-align: left;
+  }
+
+  tbody tr {
+      cursor: pointer;
+  }
+
+  tbody tr:hover {
+      background-color: #f0f0f0;
   }
 
   .book-container {

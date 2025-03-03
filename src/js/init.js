@@ -1,6 +1,7 @@
 import { db } from "../content/firebase.js";
 
 export let songLists = [];
+export let trueSongLists = [];
 
 export class Song {
   constructor(no, id, isPlay, title, artist, path) {
@@ -73,6 +74,11 @@ export async function setSongLists()
     const userPlayList = doc.data().playList || []; // 사용자의 플레이리스트 가져오기
     songLists = userPlayList
       .map(music => new Song(music.no, music.id, music.isPlay, music.title, music.artist, music.path));
+
+    trueSongLists = userPlayList
+      .filter(song => song.isPlay)
+      .map(music => new Song(music.no, music.id, music.isPlay, music.title, music.artist, music.path));
+
   } catch (error) {
         console.error("🔥 플레이리스트 가져오기 오류:", error);
   }

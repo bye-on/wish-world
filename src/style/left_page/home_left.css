@@ -87,6 +87,11 @@
     color: black;
   }
 
+  .profile-list {
+    margin-right: 10px;
+    border: none;
+  }
+
   .name {
     margin-top: 15px;
     font-size: 15px;
