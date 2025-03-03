@@ -5,12 +5,17 @@
           <link href="../../style/right_page/photo_right.css" rel="stylesheet">
       </header>
       <body>
-        <div class="diaryFrame">
+        <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-firestore.js"></script>
+
+        <div id="photo-list">
           <div class="diaryHeader">
             <p>한강 소풍 +-+!!</p>
           </div>
           <div class="date">2024.02.28.</div>
           <div class="diaryContent">
+            <div id="photoContainer"></div>
             <p>오늘은 새학기~+-+<br>
             어떤 애들이 있을까?? 기대된다ㅜㅡㅜ
             </p>
@@ -27,5 +32,6 @@
           </div>
         </div>
       </body>
+      <script type="module" src="../../js/photobook.js"></script>
   </div>
 </html>

@@ -90,8 +90,7 @@ document.getElementById("song-list").addEventListener("change", function (event)
               song.isPlay = !song.isPlay;
               changeList.set(song.id, song.isPlay);
           }
-      });
-      console.log(changeList);
+      }); 
   }
 });
 
@@ -105,8 +104,6 @@ document.getElementById("checkAll").addEventListener("change", function(event) {
     checkbox.checked = trigger;
     changeList.set(index++, trigger);
   }
-
-  console.log(changeList);
 });
 
 async function updateIsPlaying() {

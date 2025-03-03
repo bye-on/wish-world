@@ -50,37 +50,45 @@
     border-radius: 10px; /* 모서리를 둥글게 */
   }
 
+
+  .folder-container {
+    width: 90%;
+    margin-top: 10px;
+    font-family: Arial, sans-serif;
+  }
+  
   .folder {
-    margin: 5px;
-    margin-top: 15px;
-    width: 170px;
-    height: 150px;
-    border-top: 1.5px dashed #c9c9c9;
-    border-bottom: 1.5px dashed #c9c9c9;
+    font-size: 12px;
+    position: relative;
+    margin-bottom: 5px;
   }
 
-  .folder::before {
-    /*이미지 삽입*/
+  .folder p::before {
+    content: '📁 ';
+    font-size: 13px;
   }
 
   .sub-folder {
-
-  }
-
-  .sub-folder::before {
-
+    position: relative;
+    padding-left: 5px;
+    margin-left: 10px; /* 하위 폴더 들여쓰기 */
   }
 
   .folder p {
-    font-size: 13px;
-    font-weight: bold;
+    /* font-weight: 600; */
     color: navy;
     margin: 3px;
+    cursor: pointer;
   }
-
+  
   .sub-folder p {
-    font-size: 13px;
+    font-weight: lighter;
     color: navy;
     margin: 3px;
+    position: relative;
   }
 
+  .sub-folder p::before {
+    content: '📁 ';
+  }
+  
