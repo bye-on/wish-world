@@ -15,7 +15,17 @@
   <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-auth.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-firestore.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.6.5/firebase-storage.js"></script>
+  <div class="music-player-container">
+    <div class="music-player">
+      <button id="play" style="width: 18px; height: 18px;"><i class="icon-play3"></i></button>
+      <button id="stop" style="width: 18px; height: 18px;"><i class="icon-pause2"></i></button>
+      <button id="prev" style="width: 18px; height: 18px;"><i class="icon-backward2"></i></button>
+      <button id="next" style="width: 18px; height: 18px;"><i class="icon-forward3"></i></button>
+      <button id="list" style="height: 18px;"><span>LIST</span></button>
+    </div>
+  </div>
     <div class="book-container">
+     
         <div class="page left">
           <div class="inner-page left">
             
@@ -74,11 +84,11 @@
             <p>방명록</p>
           </div>
         </div>
-      </div>
+    </div>
 
-      <div id="player"></div>
-      <script src="https://www.youtube.com/iframe_api"></script>
-      <script type="module" src="../js/init.js"></script>
-      <script type="module" src="../js/music_play.js" defer></script>
+    <div id="player"></div>
+    <script src="https://www.youtube.com/iframe_api"></script>
+    <script type="module" src="../js/init.js"></script>
+    <script type="module" src="../js/music_play.js" defer></script>
 </body>
 </html>

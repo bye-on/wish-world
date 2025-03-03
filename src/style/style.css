@@ -1,6 +1,68 @@
-  @font-face {
-    font-family: 'YComputer';
-    src: url(../font/Ycomputer.ttf);
+@font-face {
+  font-family: 'YComputer';
+  src: url(../font/Ycomputer.ttf);
+}
+
+@font-face {
+  font-family: 'icomoon';
+  src:  url('../font/icomoon.eot?fd9kyl');
+  src:  url('../font/icomoon.eot?fd9kyl#iefix') format('embedded-opentype'),
+    url('../font/icomoon.ttf?fd9kyl') format('truetype'),
+    url('../font/icomoon.woff?fd9kyl') format('woff'),
+    url('../font/icomoon.svg?fd9kyl#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+  i {
+    /* use !important to prevent issues with browser extensions that change fonts */
+    font-family: 'icomoon' !important;
+    speak: never;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  .icon-play3:before {
+    font-size: 10px;
+    content: "\ea1c";
+  }
+  .icon-pause2:before {
+    font-size: 10px;
+    content: "\ea1d";
+  }
+
+  .icon-backward2:before {
+    font-size: 10px;
+    content: "\ea1f";
+  }
+  .icon-forward3:before {
+    font-size: 10px;
+    content: "\ea20";
+  }
+
+  .icon-previous2:before {
+    content: "\ea23";
+  }
+  .icon-next2:before {
+    content: "\ea24";
+  }
+
+  .icon-volume-medium:before {
+    content: "\ea27";
+  }
+  .icon-volume-low:before {
+    content: "\ea28";
+  }
+  .icon-volume-mute2:before {
+    content: "\ea2a";
   }
   
   body {
@@ -9,12 +71,52 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
     height: 100vh; /* 화면 전체 높이 */
     background-color: #99ebcf;
     overflow: hidden;
     background: linear-gradient(to bottom, #99ebcf, #dde7e4, #eff1a6);
   }
   
+  .music-player-container {
+    padding-left: 600px;
+    margin-bottom: 5px;
+    z-index: 1;
+  }
+
+  .music-player {
+    display: flex;
+    align-items: center;
+    background-color: rgb(240, 240, 240);
+    border-radius: 3px;
+
+    gap: 3px;
+    padding: 2px;
+    padding-left: 10px;
+    padding-right: 7px;
+  }
+
+  .music-player button {
+    padding: 0px;
+    padding-bottom: 10px;
+    border: none;
+    cursor: pointer;
+    color: rgb(72, 72, 72);
+  }
+
+  .music-player button span {
+    padding: 2px;
+    padding-left: 5px;
+    padding-right: 5px;
+    margin-left: 18px;
+
+    font-size: 11px;
+    color: white;
+    background-color: #a5a5a5;
+    border: 1px solid darkgrey;
+    border-radius: 5px
+  }
+
   .book-container {
     display: flex;
   }

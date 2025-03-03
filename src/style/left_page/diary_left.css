@@ -90,7 +90,7 @@
   }
 
   .folder p {
-    font-weight: 600;
+    /* font-weight: 600; */
     color: navy;
     margin: 3px;
     cursor: pointer;

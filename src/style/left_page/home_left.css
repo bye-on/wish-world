@@ -80,3 +80,31 @@
     margin-top: 5px;
     color: rgb(60, 186, 218);
   }
+
+  .gimochi-box span {
+    font-size: 14px;
+    font-weight: 600;
+    color: black;
+  }
+
+  .name {
+    margin-top: 15px;
+    font-size: 15px;
+    font-weight: 700;
+    color: rgb(7, 102, 190);
+  }
+
+  .name span {
+    font-weight: 500;
+    font-size: 10px;
+    color: gray;
+  }
+
+  .email {
+    font-size: 12px;
+    color: orange;
+  }
+
+  .connect-list {
+    margin-top: 15px;
+  }
