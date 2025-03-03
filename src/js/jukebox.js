@@ -10,6 +10,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     await setSongLists();
     
     document.getElementById("updateList").addEventListener('click', updateIsPlaying);
+
     // document.getElementById("songForm").addEventListener("submit", function (event) {
     //     event.preventDefault();
     //     addSong();
@@ -92,6 +93,20 @@ document.getElementById("song-list").addEventListener("change", function (event)
       });
       console.log(changeList);
   }
+});
+
+document.getElementById("checkAll").addEventListener("change", function(event) {
+  const checkBoxes = document.querySelectorAll('.song-checkbox');
+  const trigger = event.target.checked;
+  let index = 1;
+
+  for(let checkbox of checkBoxes)
+  {
+    checkbox.checked = trigger;
+    changeList.set(index++, trigger);
+  }
+
+  console.log(changeList);
 });
 
 async function updateIsPlaying() {
