@@ -1,4 +1,4 @@
-import { db } from "../content/firebase.js";
+import { db } from "../firebase.js";
 
 export let songLists = [];
 export let trueSongLists = [];

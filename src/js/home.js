@@ -1,4 +1,4 @@
-import { db } from "../content/firebase.js";
+import { db } from "../firebase.js";
 
 // 최신 글을 가져오는 함수
 async function fetchLatestPosts() {

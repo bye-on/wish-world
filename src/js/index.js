@@ -1,8 +1,8 @@
 const menuHome = () => {
     // 왼쪽 iframe의 src 업데이트
-    document.getElementById("leftFrame").setAttribute("src", "./left_page/home_left.html");
+    document.getElementById("leftFrame").setAttribute("src", "./content/left_page/home_left.html");
     // 오른쪽 iframe의 src 업데이트
-    document.getElementById("rightFrame").setAttribute("src", "./right_page/home_right.html");
+    document.getElementById("rightFrame").setAttribute("src", "./content/right_page/home_right.html");
 
     document.getElementById("menuHome").style = "color: black; z-index: 2;"
     document.getElementById("menuProfile").style = "color: black; z-index: 1;"  
@@ -14,9 +14,9 @@ const menuHome = () => {
 
 // const menuProfile = () => {
 //   // 왼쪽 iframe의 src 업데이트
-//   document.getElementById("leftFrame").setAttribute("src", "./left_page/profile_left.html");
+//   document.getElementById("leftFrame").setAttribute("src", "./content/left_page/profile_left.html");
 //   // 오른쪽 iframe의 src 업데이트
-//   document.getElementById("rightFrame").setAttribute("src", "./right_page/profile_right.html");
+//   document.getElementById("rightFrame").setAttribute("src", "./content/right_page/profile_right.html");
 
 //   document.getElementById("menuHome").style = "color: black; z-index: 1;"
 //   document.getElementById("menuProfile").style = "color: black; z-index: 2;"  
@@ -28,9 +28,9 @@ const menuHome = () => {
 
 const menuDiary = () => {
   // 왼쪽 iframe의 src 업데이트
-  document.getElementById("leftFrame").setAttribute("src", "./left_page/diary_left.html");
+  document.getElementById("leftFrame").setAttribute("src", "./content/left_page/diary_left.html");
   // 오른쪽 iframe의 src 업데이트
-  document.getElementById("rightFrame").setAttribute("src", "./right_page/diary_right.html");
+  document.getElementById("rightFrame").setAttribute("src", "./content/right_page/diary_right.html");
 
   document.getElementById("menuHome").style = "color: black; background-color: rgb(255, 255, 255, 0.7);; z-index: 1;"
   document.getElementById("menuProfile").style = "color: black; z-index: 1;"  
@@ -42,9 +42,9 @@ const menuDiary = () => {
 
 const menuJukeBox = () => {
   // 왼쪽 iframe의 src 업데이트
-  document.getElementById("leftFrame").setAttribute("src", "./left_page/jukebox_left.html");
+  document.getElementById("leftFrame").setAttribute("src", "./content/left_page/jukebox_left.html");
   // 오른쪽 iframe의 src 업데이트
-  document.getElementById("rightFrame").setAttribute("src", "./right_page/jukebox_right.html");
+  document.getElementById("rightFrame").setAttribute("src", "./content/right_page/jukebox_right.html");
 
   document.getElementById("menuHome").style = "color: black; background-color: rgb(255, 255, 255, 0.7);; z-index: 1;"
   document.getElementById("menuProfile").style = "color: black; z-index: 1;"  
@@ -56,9 +56,9 @@ const menuJukeBox = () => {
 
 const menuPhoto = () => {
   // 왼쪽 iframe의 src 업데이트
-  document.getElementById("leftFrame").setAttribute("src", "./left_page/photo_left.html");
+  document.getElementById("leftFrame").setAttribute("src", "./content/left_page/photo_left.html");
   // 오른쪽 iframe의 src 업데이트
-  document.getElementById("rightFrame").setAttribute("src", "./right_page/photo_right.html");
+  document.getElementById("rightFrame").setAttribute("src", "./content/right_page/photo_right.html");
 
   document.getElementById("menuHome").style = "color: black; background-color: rgb(255, 255, 255, 0.7);; z-index: 1;"
   document.getElementById("menuProfile").style = "color: black; z-index: 1;"  
@@ -70,9 +70,9 @@ const menuPhoto = () => {
 
 const menuGuestBook = () => {
   // 왼쪽 iframe의 src 업데이트
-  document.getElementById("leftFrame").setAttribute("src", "./left_page/home_left.html");
+  document.getElementById("leftFrame").setAttribute("src", "./content/left_page/home_left.html");
   // 오른쪽 iframe의 src 업데이트
-  document.getElementById("rightFrame").setAttribute("src", "./right_page/guestbook_right.html");
+  document.getElementById("rightFrame").setAttribute("src", "./content/right_page/guestbook_right.html");
   
   document.getElementById("menuHome").style = "color: black; background-color: rgb(255, 255, 255, 0.7);; z-index: 1;"
   document.getElementById("menuProfile").style = "color: black; z-index: 1;"  

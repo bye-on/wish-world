@@ -1,4 +1,4 @@
-import { db } from "../content/firebase.js";
+import { db } from "../firebase.js";
 import { formatDateUsingLocale } from "./utils.js";
 
 let date = new Date();

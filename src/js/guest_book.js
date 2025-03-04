@@ -1,4 +1,4 @@
-import { db } from "../content/firebase.js";
+import { db } from "../firebase.js";
 
 document.addEventListener("DOMContentLoaded", function () {
     loadGuestBook(); // 페이지 로드 시 방명록 목록 불러오기

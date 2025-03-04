@@ -1,4 +1,4 @@
-import { db } from "../content/firebase.js";
+import { db } from "../firebase.js";
 // import { playlist } from "./music_play.js";
 import { parseAfterDelimiter } from "./utils.js";
 import { getUserId, songLists, Song, setSongLists } from "./init.js";

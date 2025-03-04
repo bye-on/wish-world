@@ -1,4 +1,4 @@
-import { db } from "../content/firebase.js";
+import { db } from "../firebase.js";
 import { getUserId, initializeUserPlayList, setSongLists, Song } from "./init.js";
 import { parseAfterDelimiter } from "./utils.js";
 
@@ -133,7 +133,7 @@ function showPlaylist() {
       let titleCell = document.createElement("td");
       let artistCell = document.createElement("td");
 
-      playBtn.innerHTML = `<img src="../img/musicBtn.png">`;
+      playBtn.innerHTML = `<img src="./img/musicBtn.png">`;
       titleCell.textContent = song.title;
       artistCell.textContent = song.artist;
 

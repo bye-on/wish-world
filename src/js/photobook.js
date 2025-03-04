@@ -1,5 +1,5 @@
-import firebaseConfig from "../content/config.js";
-import { db } from "../content/firebase.js";
+import firebaseConfig from "../config.js";
+import { db } from "../firebase.js";
 import { formatDateUsingLocale } from "./utils.js";
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";

@@ -1,4 +1,4 @@
-import { db } from "../content/firebase.js";
+import { db } from "../firebase.js";
 
 // 📅 오늘 날짜 포맷 (YYYY-MM-DD)
 const getTodayDate = () => {
