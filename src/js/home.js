@@ -5,33 +5,51 @@ async function fetchLatestPosts() {
     try {
         const latestPostsContainer = document.getElementById('contents__body'); // 최신 글 표시할 div
 
-        // photobook 컬렉션에서 최신 3개 문서 가져오기
+        // 두 컬렉션에서 각각 최신 3개 문서 가져오기
         const photobookSnapshot = await db.collection("photobook")
-            .orderBy("created_at", "desc") // 최신순 정렬
-            .limit(3)
+            .orderBy("created_at", "desc")
+            .limit(3) // 최대한 많이 가져오기
             .get();
 
-        // diary 컬렉션에서 최신 3개 문서 가져오기
         const diarySnapshot = await db.collection("diary")
             .orderBy("created_at", "desc")
-            .limit(3)
+            .limit(3) // 최대한 많이 가져오기
             .get();
 
-        let postsHTML = "";
+        // 두 컬렉션의 데이터를 하나의 배열로 합치기
+        let posts = [];
 
-        // photobook 글 추가
         photobookSnapshot.forEach(doc => {
             const data = doc.data();
-            postsHTML += `<li>📸 ${data.header}</li>`;
+            posts.push({
+                type: "photo",
+                header: data.header,
+                created_at: data.created_at
+            });
         });
 
-        // diary 글 추가
         diarySnapshot.forEach(doc => {
             const data = doc.data();
-            const diaryContent = data.content.replace(/\\n/g, " ");
-
-            postsHTML += `<li>📖 ${diaryContent.replace(/\n/g, " ")}</li>`;
+            const diaryContent = data.content.replace(/\\n/g, " ").replace(/\n/g, " ");
+            posts.push({
+                type: "diary",
+                content: diaryContent,
+                created_at: data.created_at
+            });
         });
+
+        // created_at 기준으로 최신순 정렬 후, 3개만 선택
+        posts.sort((a, b) => b.created_at - a.created_at);
+        posts = posts.slice(0, 3);
+
+        // HTML 생성
+        let postsHTML = posts.map(post => {
+            if (post.type === "photo") {
+                return `<li>📸 ${post.header}</li>`;
+            } else {
+                return `<li>📖 ${post.content}</li>`;
+            }
+        }).join("");
 
         latestPostsContainer.innerHTML = `<ul id="latest-posts">${postsHTML}</ul>`;
 

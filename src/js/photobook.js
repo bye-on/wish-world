@@ -8,17 +8,23 @@ import { getStorage, ref, getDownloadURL } from "https://www.gstatic.com/firebas
 export const app = initializeApp(firebaseConfig);
 export const storage = getStorage(app);
 
-function getImg(path)
+function getImg(path, container)
 {
     const imageRef = ref(storage, path);
 
     getDownloadURL(imageRef)
     .then((url) => {
-      document.getElementById("photoContainer").innerHTML = `<img src="${url}" alt="Firebase Image" style="width: 300px;">`;
+        const imgElement = document.createElement("img");
+        imgElement.src = url;
+        imgElement.alt = "Firebase Image";
+        imgElement.style.width = "300px";
+        imgElement.style.height = "auto";
+
+        container.appendChild(imgElement);
     })
     .catch((error) => {
-      console.error("이미지를 불러오는 중 오류 발생:", error);
-  });
+        console.error("이미지를 불러오는 중 오류 발생:", error);
+    });
 }
 
 document.addEventListener("DOMContentLoaded", async () => {
@@ -31,9 +37,17 @@ document.addEventListener("DOMContentLoaded", async () => {
         diarySnapshot.forEach(async (doc) => {
             const diary = doc.data();
             const diaryId = doc.data().id
+            
+            const photoContainer = document.createElement("div"); // 개별 컨테이너 생성
+            photoContainer.classList.add("photoContainer");
 
-            const path = diary.img;
-            getImg(path);
+            if (Array.isArray(diary.img)) {
+                // 여러 개의 이미지가 있는 경우
+                diary.img.forEach(imgPath => getImg(imgPath, photoContainer));
+            } else {
+                // 단일 이미지인 경우
+                getImg(diary.img, photoContainer);
+            }
 
             const diaryDiv = document.createElement("div");
             diaryDiv.classList.add("diary");
@@ -48,7 +62,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                     </div>
                     <div class="date">${formatDateUsingLocale(diary.created_at)}</div>
                     <div class="diaryContent">
-                        <div id="photoContainer"></div>
+                        <div id="photoContainer-${diaryId}"></div>
                         <p>${diaryContent.replace(/\n/g, "<br>")}</p>
                     </div>
                     <div class="divideLine"></div>
@@ -58,7 +72,8 @@ document.addEventListener("DOMContentLoaded", async () => {
                     </div>
                 </div>
             `;
-
+            
+            diaryDiv.querySelector(`#photoContainer-${diaryId}`).appendChild(photoContainer);
             diaryList.appendChild(diaryDiv);
 
             // 🔽 Firestore에서 댓글 불러오기 🔽
