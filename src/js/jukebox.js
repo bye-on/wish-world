@@ -72,9 +72,11 @@ function renderSongList(songList) {
       row.innerHTML = `
           <td style="width:20px"><input type="checkbox" class="song-checkbox" data-id="${song.id}" ${song.isPlay ? "checked" : ""} /></td>
           <td align="center">${index + 1}</td>
+          <td id="playBtn"><img src="../../img/musicBtn.png"></td>
           <td><span style="padding-left: 10px; padding-right: 10px;">${song.title}</span></td>
           <td><span style="padding-left: 10px; padding-right: 10px;">${song.artist}</span></td>
       `;
+
       jukeboxTable.appendChild(row);
   });
 }
@@ -147,8 +149,18 @@ async function reloadPlayList() {
           .filter(song => song.isPlay)
           .map(music => new Song(music.no, music.id, music.isPlay, music.title, music.artist, music.path));
 
+      updateMusicPlayer(playLists);
       console.log(`🎵 ${userId}의 활성화된 플레이리스트:`, playLists);
     } catch (error) {
         console.error("🔥 플레이리스트 가져오기 오류:", error);
     }
+}
+
+// iframe이라 window.parent 써야 됨
+function updateMusicPlayer(newPlayList) {
+  if (window.parent.updatePlayListInMusicPlayer) {
+      window.parent.updatePlayListInMusicPlayer(newPlayList);
+  } else {
+      console.warn("⚠️ music_play.js가 아직 로드되지 않음.");
+  }
 }

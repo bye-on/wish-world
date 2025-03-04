@@ -1,5 +1,5 @@
 import { db } from "../content/firebase.js";
-import { getUserId, initializeUserPlayList, trueSongLists, setSongLists } from "./init.js";
+import { getUserId, initializeUserPlayList, setSongLists, Song } from "./init.js";
 import { parseAfterDelimiter } from "./utils.js";
 
 var tag = document.createElement("script");
@@ -9,6 +9,7 @@ firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
 var player;
 
+let trueSongLists = [];
 let playlist = [];
 var videoIndex = 0;
 
@@ -44,6 +45,10 @@ function init() {
         .filter((song) => song.isPlay)
         .map((song) => parseAfterDelimiter(song.path, delimiter));
 
+      trueSongLists = userPlayList
+        .filter(song => song.isPlay)
+        .map(song => new Song(song.no, song.id, song.isPlay, song.title, song.artist, song.path));
+
       console.log(`🎵 ${userId}의 활성화된 유튜브 ID 리스트:`, playlist);
       setUpPlayer();
     })
@@ -53,7 +58,7 @@ function init() {
 }
 
 function setUpPlayer() {
-  window.YT.ready(function () {
+  YT.ready(function () {
     player = new YT.Player("player", {
       height: "0",
       width: "0",
@@ -168,3 +173,26 @@ window.addEventListener("resize", function () {
       updatePlaylistPosition();
   }
 });
+
+window.updatePlayListInMusicPlayer = function(newPlayList) {
+  let newTrueList = newPlayList
+        .filter(song => song.isPlay)
+        .map(song => new Song(song.no, song.id, song.isPlay, song.title, song.artist, song.path));
+  let newList = newPlayList
+    .map((song) => parseAfterDelimiter(song.path, delimiter));
+
+  // 기존 플레이리스트 교체
+  trueSongLists = newTrueList;
+  playlist = newList;
+  videoIndex = 0;
+
+  if(playlist.length > 0)
+  {
+    // ✅ 첫 번째 곡부터 다시 재생
+    player.loadVideoById(playlist[videoIndex]);
+  }
+  else
+  {
+    player.stopVideo();
+  }
+}
