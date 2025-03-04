@@ -79,6 +79,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                 commentDiv.classList.add("comment");
                 commentDiv.innerHTML = `
                     <span class="userName">${comment.author}</span> ${comment.content}
+                    <span class="created_at">(${formatDateUsingLocale(comment.created_at)})</span>
                 `;
 
                 // 해당 댓글의 대댓글 출력
@@ -88,6 +89,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                     recommentDiv.classList.add("recomment");
                     recommentDiv.innerHTML = `
                         <span class="userName">${reply.author}</span> ${reply.content}
+                        <span class="created_at">(${formatDateUsingLocale(comment.created_at)})</span>
                     `;
                     commentDiv.appendChild(recommentDiv);
                 });

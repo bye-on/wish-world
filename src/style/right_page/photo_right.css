@@ -103,3 +103,9 @@ body {
     color: grey;
     content: ' : ';
 }
+
+.created_at {
+    padding-left: 3px;
+    font-size: 10px;
+    color: gray;
+}
