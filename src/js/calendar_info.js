@@ -13,26 +13,28 @@ const renderCalendar = () => {
     let liTag = '';
 
     let firstDayofMonth = new Date(currYear, currMonth, 1).getDay();
-     
+
     for (let i = firstDayofMonth; i > 0; i--) {
-        // liTag += `<li class = "inactive">${lastDateofLastMonth - i + 1}</li>`;
-        liTag += `<li class = "inactive"></li>`; // 공백 처리
+        liTag += `<li class="inactive"></li>`; // 공백 처리
     }
 
-    for (let i = 1; i <= lastDateofMonth; i++)
-    {
+    for (let i = 1; i <= lastDateofMonth; i++) {
         const currentDay = new Date(currYear, currMonth, i).getDay();
         let isToday = i === today.getDate() && currMonth === today.getMonth() 
-            && currYear === today.getFullYear() ? 'active' : '';
+            && currYear === today.getFullYear();
 
-        if(currentDay == 0) // 일요일일 때
-            liTag += `<li class="sun">${i}</li>`;
-        else
-            liTag += `<li class="${isToday}">${i}</li>`;
+        let className = isToday ? 'active' : ''; // 오늘이면 'active'
+        
+        if (currentDay == 0) { // 일요일이면 'sun' 추가
+            className = isToday ? 'active' : 'sun';
+        }
+
+        liTag += `<li class="${className}">${i}</li>`;
     }
 
     daysTag.innerHTML = liTag;
-}
+};
+
 
 const buttonIcon = document.querySelectorAll('.material-icons');
 buttonIcon.forEach((icon) => {

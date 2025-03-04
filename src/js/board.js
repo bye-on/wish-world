@@ -1,6 +1,18 @@
 import { db } from "../content/firebase.js";
 import { formatDateUsingLocale } from "./utils.js";
 
+let date = new Date();
+let todayContainer = document.querySelector('.today'); // .today 요소 가져오기
+todayContainer.textContent = `${date.getDate()}`;
+
+const days = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"]; // 요일 배열
+
+const dayDiv = document.createElement("div");
+dayDiv.classList.add("date");
+dayDiv.innerText = `${days[date.getDay()]}`;
+todayContainer.appendChild(dayDiv);
+
+
 document.addEventListener("DOMContentLoaded", async () => {
     const diaryList = document.getElementById("diary-list");
     diaryList.innerHTML = ""; // 기존 목록 초기화
