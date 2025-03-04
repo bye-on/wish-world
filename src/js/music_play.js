@@ -123,17 +123,21 @@ function showPlaylist() {
 
   trueSongLists.forEach((song, index) => { // 인덱스를 추가로 가져옴
       let row = document.createElement("tr");
+      let playBtn = document.createElement("td");
+      playBtn.className = "playBtn";
       let titleCell = document.createElement("td");
       let artistCell = document.createElement("td");
 
+      playBtn.innerHTML = `<img src="../img/musicBtn.png">`;
       titleCell.textContent = song.title;
       artistCell.textContent = song.artist;
 
+      row.appendChild(playBtn);
       row.appendChild(titleCell);
       row.appendChild(artistCell);
 
       // 클릭하면 해당 행번호(index)에 맞는 곡 재생
-      row.addEventListener("click", function () {
+      playBtn.addEventListener("click", function () {
           selectVideo(index); // selectVideo 함수 호출
       });
 

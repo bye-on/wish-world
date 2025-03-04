@@ -131,22 +131,42 @@
   table {
       width: 100%;
       border-collapse: collapse;
-      border-radius: 5px;
+      font-size: 10px;
+      border: 1px solid #ccc;
+      border-radius: 3px;
   }
 
   th, td {
-      border: 1px solid #ccc;
-      padding: 5px;
-      text-align: left;
+    /* border: 1px solid #ccc; */
+    padding: 5px;
+    text-align: left;
   }
 
-  tbody tr {
-      cursor: pointer;
+  th {
+    border-bottom: 1px solid #ccc;
   }
 
-  tbody tr:hover {
-      background-color: #f0f0f0;
+  th span {
+    color: darkgray;
+    padding-left: 160px;
   }
+
+  .playBtn {
+    padding: 2px;
+    padding-top: 7px;
+    text-align: center;
+    cursor: pointer;
+  }
+
+  /* .playBtn i {
+    text-align: center;
+    padding: 2px;
+    background-color: white;
+    color: darkorange;
+
+    border: 1px solid rgb(202, 202, 202);
+    border-radius: 5px;
+  } */
 
   .book-container {
     display: flex;
