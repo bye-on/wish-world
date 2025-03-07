@@ -66,13 +66,16 @@
   }
   
   body {
+    width: 1200px;
+    height: 900px;
+
     margin: 0;
     padding: 0;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    height: 100vh; /* 화면 전체 높이 */
+    
     background-color: #99ebcf;
     overflow: hidden;
     background: linear-gradient(to bottom, #99ebcf, #dde7e4, #eff1a6);
