@@ -1,17 +1,13 @@
 # Wish-World
 ```
-한 줄 소개: 싸이월드 미니홈피 모작<br>
-날짜: 2025년 1월 20일 → 2025년 3월 4일<br>
-스킬: CSS, Firebase, HTML, JavaScript<br>
-담당 기능: 개발, 기획, 배포, 설계<br>
-팀 구성: 프로그래머 1명<br>
+한 줄 소개: 싸이월드 미니홈피 모작
+날짜: 2025년 1월 20일 → 2025년 3월 4일
+스킬: CSS, Firebase, HTML, JavaScript
+담당 기능: 개발, 기획, 배포, 설계
+팀 구성: 프로그래머 1명
 ```
 
-## 🔗 Source Code
-
-[https://github.com/bye-on/wish-world](https://github.com/bye-on/wish-world)
-
-
+---
 ## 🚩 개발 목표
 
 - 싸이월드 미니홈피를 모작하여 웹 개발 이해 도모
