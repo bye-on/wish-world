@@ -1,28 +1,29 @@
 # Wish-World
-
-한 줄 소개: 싸이월드 미니홈피 모작
-날짜: 2025년 1월 20일 → 2025년 3월 4일
-스킬: CSS, Firebase, HTML, JavaScript
-담당 기능: 개발, 기획, 배포, 설계
-팀 구성: 프로그래머 1명
+```
+한 줄 소개: 싸이월드 미니홈피 모작<br>
+날짜: 2025년 1월 20일 → 2025년 3월 4일<br>
+스킬: CSS, Firebase, HTML, JavaScript<br>
+담당 기능: 개발, 기획, 배포, 설계<br>
+팀 구성: 프로그래머 1명<br>
+```
 
 ## 🔗 Source Code
 
 [https://github.com/bye-on/wish-world](https://github.com/bye-on/wish-world)
 
+
 ## 🚩 개발 목표
 
 - 싸이월드 미니홈피를 모작하여 웹 개발 이해 도모
 - 실제 배포하여 유저 피드백 듣기
+  
 
 ## 📝 프로젝트 설명
-
-<aside>
-<p><img src="./src/img/READMEimg/left-wing.png" alt="left-wing.png" width="40px" /> 싸이월드 미니홈피를 모작하여 재해석한 ‘wish world’입니다. 실제 서비스했던 웹을 모작하여 프론트엔드 개발에 대한 이해를 도모하였습니다.</p>
-
-</aside>
-
 [https://wish-world-desu.web.app/](https://wish-world-desu.web.app/)
+
+```
+싸이월드 미니홈피를 모작하여 재해석한 ‘wish world’입니다. 실제 서비스했던 웹을 모작하여 프론트엔드 개발에 대한 이해를 도모하였습니다.
+```
 
 ## 🔨 사용 기술
 
@@ -39,7 +40,8 @@
 
 ⇒ 전체적인 UI 모습입니다. 인덱스를 통해 ‘다이어리, 쥬크박스, 사진첩, 방명록’으로 이동 가능합니다. 현재 BGM이 자동재생되어 있으므로, 오른쪽 페이지의 내용은 iframe으로 보여지므로 음악 끊김없이 이용할 수 있습니다.
 
-또한, Today와 Total을 통해 오늘의 사용자의 총 사용자 수를 반영하였습니다. 
+또한, Today와 Total을 통해 오늘의 사용자의 총 사용자 수를 반영하였습니다.
+
 
 ![image.png](./src/img/READMEimg/image%201.png)
 
