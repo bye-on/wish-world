@@ -18,7 +18,7 @@
 ## 📝 프로젝트 설명
 
 <aside>
-<img src="./src/img/READMEimg/left-wing.png" alt="left-wing.png" width="40px" /> 싸이월드 미니홈피를 모작하여 재해석한 ‘wish world’입니다. 실제 서비스했던 웹을 모작하여 프론트엔드 개발에 대한 이해를 도모하였습니다.
+<p><img src="./src/img/READMEimg/left-wing.png" alt="left-wing.png" width="40px" /> 싸이월드 미니홈피를 모작하여 재해석한 ‘wish world’입니다. 실제 서비스했던 웹을 모작하여 프론트엔드 개발에 대한 이해를 도모하였습니다.</p>
 
 </aside>
 
